@@ -49,6 +49,7 @@ function App() {
         </Route>
         
         </Switch>
+        
       <Footer />
     </div>
   );
