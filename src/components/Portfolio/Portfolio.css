@@ -62,7 +62,7 @@
 }
 
   @media screen and (max-width: 768px) {
-    .portfolio {
+    .portfolio__container {
       padding: 0 50px 71px;
     }
   
@@ -72,7 +72,7 @@
   }
   
   @media screen and (max-width: 530px) {
-    .portfolio {
+    .portfolio__container {
       padding: 0 14px 51px;
     }
   
@@ -84,7 +84,7 @@
       padding-top: 20px;
     }
   
-    .portfolio__link .portfolio__link-icon {
+    .portfolio__link, .portfolio__link-icon {
       font-size: 18px;
       line-height: 28px;
     }

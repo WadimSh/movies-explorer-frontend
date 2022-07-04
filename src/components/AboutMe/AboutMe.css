@@ -30,6 +30,7 @@
   .about-me__info {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
   }
   
   .about-me__name {
@@ -101,10 +102,18 @@
   }
   
   @media screen and (max-width: 770px) {
-    .about-me {
+    .about-me__container {
       padding: 90px 50px;
     }
+
+    .about-me__wrap {
+      gap: 49px;
+    }
   
+    .about-me__info {
+      max-width: 364px;
+    }
+
     .about-me__name {
       font-size: 40px;
       line-height: 40px;
@@ -170,7 +179,7 @@
   }
   
   @media screen and (max-width: 530px) {
-    .about-me {
+    .about-me__container {
       padding: 70px 14px;
     }
   }
