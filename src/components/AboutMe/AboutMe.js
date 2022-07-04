@@ -1,5 +1,6 @@
 import React from 'react';
 import './AboutMe.css';
+import Photo from '../../images/about-me.jpg';
 
 function AboutMe() {
   return (
@@ -20,7 +21,7 @@ function AboutMe() {
             </li>
           </ul>
         </div>
-        <img className="about-me__photo" src='#' alt="Фотография студента" />
+        <img className="about-me__photo" src={Photo} alt="Фотография студента" />
       </div>
         </div>
       
