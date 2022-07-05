@@ -1,0 +1,88 @@
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
+}
+
+.navigation__user-register {
+  margin-left: auto;
+  font-family: 'Inter', Arial, sans-serif; ;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.navigation__user-register:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.navigation__user-login {
+  padding: 8px 20px;
+  background-color: #2BE080;
+  border-radius: 3px;
+  font-family: 'Inter', Arial, sans-serif; ;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.navigation__user-login:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.navigation__destop-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.navigation__site-link {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.navigation__site-link:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.navigation__site-link_active {
+  font-weight: 500;
+}
+
+.navigation__user-profile {
+  padding: 8px 20px;
+  margin-left: auto;
+  background-color: #F9F9F9;
+  border-radius: 20px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.navigation__user-profile:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 770px) {
+  .navigation__destop-menu {
+    display: none;
+  }
+}

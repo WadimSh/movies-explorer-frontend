@@ -14,9 +14,14 @@ import Footer from '../Footer/Footer';
 import './App.css';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
   return (
     <div className="page">
-      <Header />
+      <Header 
+        loggedIn={loggedIn}
+      />
     
       <Switch>
         
