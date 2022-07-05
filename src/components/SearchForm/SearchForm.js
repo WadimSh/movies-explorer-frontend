@@ -6,6 +6,7 @@ function SearchForm() {
     <section className="search-form">
       <form className="search-form__form">
         <div className="search-form__input-wrap">
+          <div className='search-from__icon'></div>
           <input value='' className="search-form__input" type="text" name="query" placeholder="Фильм" required />
           <button className="search-form__submit" type="submit" ></button>
         </div>
