@@ -4,6 +4,17 @@ import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 function Navigation({ loggedIn }) {
+
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  function handleMenuOpen() {
+    setIsMenuOpen(true);
+  }
+
+  function handleMenuClose() {
+    setIsMenuOpen(false);
+  }
+
   return (
     <nav className='navigation'>
       {loggedIn ? (
@@ -16,10 +27,12 @@ function Navigation({ loggedIn }) {
             <NavLink className='navigation__site-link' activeClassName="navigation__site-link_active" to="/movies"> Фильмы </NavLink>
             <NavLink className='navigation__site-link' activeClassName="navigation__site-link_active" to="/saved-movies"> Сохранённые фильмы </NavLink>
             <Link className='navigation__user-profile' to="/profile"> Аккаунт </Link>
+            <button className='navigation__button' onClick={handleMenuOpen} type="button"></button>
           </div>
         )
       }
     </nav>
+    
   );
 }
 
