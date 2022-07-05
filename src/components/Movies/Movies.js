@@ -9,7 +9,6 @@ function Movies() {
   return (
     <main className="movies">
       <SearchForm />
-      
       <MoviesCardList />
     </main>
   );
