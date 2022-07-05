@@ -31,6 +31,17 @@ function Navigation({ loggedIn }) {
           </div>
         )
       }
+
+      <div className={`navigation__mobile-menu mobile-menu ${isMenuOpen ? "mobile-menu_is-open" : ""}`}>
+        <div className="mobile-menu__links">
+          <button className="mobile-menu__close" onClick={handleMenuClose} type="button"></button>
+          <NavLink className="mobile-menu__site-link" activeClassName="mobile-menu__site-link_active" exact to="/" onClick={handleMenuClose}>Главная</NavLink>
+          <NavLink className="mobile-menu__site-link" activeClassName="mobile-menu__site-link_active" to="/movies" onClick={handleMenuClose}>Фильмы</NavLink>
+          <NavLink className="mobile-menu__site-link" activeClassName="mobile-menu__site-link_active" to="/saved-movies" onClick={handleMenuClose}>Сохранённые фильмы</NavLink>
+          <Link className="mobile-menu__user-profile" to="/profile" onClick={handleMenuClose}>Аккаунт</Link>
+        </div>
+      </div>
+
     </nav>
     
   );
