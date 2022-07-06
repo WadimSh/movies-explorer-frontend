@@ -94,6 +94,11 @@
     display: none;
   }
 
+  .navigation__button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
   .mobile-menu {
     background-color: rgba(0,0,0,0.3);
     position: fixed;
@@ -111,7 +116,7 @@
   }
   
   .mobile-menu__links {
-    padding: 160px 90px 90px;
+    padding: 160px 0 90px;
     background-color: white;
     height: 100vh;
     width: 80%;
