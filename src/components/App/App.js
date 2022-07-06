@@ -11,11 +11,33 @@ import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 
+import cardsList from '../../utils/cardsList';
+
 import './App.css';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const saveCardsList = [];
+
+  function handleSeveMovies(movieCard) {
+    const seve = saveCardsList.includes(movieCard)
+    if (!seve) {
+        saveCardsList.push(movieCard);
+        console.log(saveCardsList)
+      }
+    }
+  
+
+  function handleDeleteMovies(movieCard) {
+    const seve = saveCardsList.includes(movieCard)
+    if (seve) {
+        saveCardsList.splice(movieCard.id - 1, 1);
+        console.log(movieCard.id)
+      }
+  }
+
 
   return (
     <div className="page">
@@ -30,11 +52,19 @@ function App() {
         </Route>
         
         <Route path="/movies">
-          <Movies />
+          <Movies 
+           cardsList={cardsList}
+           onCardSaved={handleSeveMovies}
+           onCardDelete={handleDeleteMovies}
+          />
         </Route>
           
         <Route path="/saved-movies">
-          <SavedMovies />
+          <SavedMovies
+          cardsList={saveCardsList}
+          onCardSaved={handleSeveMovies}
+          onCardDelete={handleDeleteMovies}
+          />
         </Route>
           
         <Route path="/profile">

@@ -5,11 +5,16 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 import './Movies.css';
 
-function Movies() {
+function Movies({ cardsList, onCardSaved, onCardDelete }) {
+  console.log(cardsList);
   return (
     <main className="movies">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList 
+        cardsList={cardsList}
+        onCardSaved={onCardSaved}
+        onCardDelete={onCardDelete}
+      />
     </main>
   );
 }

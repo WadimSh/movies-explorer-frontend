@@ -3,17 +3,23 @@ import { Route, Switch } from 'react-router-dom';
 
 import './MoviesCard.css';
 
-
-function MoviesCard({ movieCard }) {
+function MoviesCard({ movieCard, onCardSaved, onCardDelete }) {
 
   const [isMoviesSeved, setMoviesSeved] = React.useState(false);
-
-  function handleMoviesSeved(movieCard) {
-    setMoviesSeved(!isMoviesSeved);
+  
+  function handleMoviesSeved() {
+    if (!isMoviesSeved) {
+      setMoviesSeved(true);
+      onCardSaved(movieCard);
+    } else {
+      setMoviesSeved(false);
+      onCardDelete(movieCard);
+    }
+    
   }
 
   function handleMoviesDelete() {
-    
+    onCardDelete(movieCard.id);
   }
 
 return (
@@ -25,16 +31,15 @@ return (
       </div>
       <Switch>
         <Route path="/movies">
-          <button className={isMoviesSeved ? `movies-card__button_type_save` : `movies-card__button_type_save-active`} onClick={handleMoviesSeved} type="button"></button>
+          <button className={!isMoviesSeved ? `movies-card__button_type_save` : `movies-card__button_type_save-active`} onClick={handleMoviesSeved} type="button"></button>
+        </Route>
+        <Route path="/saved-movies">
+
         </Route>
       </Switch>
     </div>
     <a className="movies-card__link" href="#">
-      <Switch>
-        <Route path="/movies">
-          <img className="movies-card__cover" src={movieCard.image} alt="Обложка фильма" />
-        </Route>
-      </Switch>
+      <img className="movies-card__cover" src={movieCard.image} alt="Обложка фильма" />
     </a>
   </li>
 );

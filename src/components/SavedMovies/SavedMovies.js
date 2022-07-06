@@ -5,11 +5,15 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 import './SavedMovies.css';
 
-function SavedMovies() {
+function SavedMovies({ cardsList, onCardSaved, onCardDelete }) {
   return (
     <main className="saved-movies">
     <SearchForm />
-    <MoviesCardList />
+    <MoviesCardList
+    cardsList={cardsList}
+    onCardSaved={onCardSaved}
+    onCardDelete={onCardDelete}
+    />
     </main>
   );
 }
