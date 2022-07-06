@@ -6,6 +6,7 @@ import './MoviesCard.css';
 function MoviesCard({ movieCard, onCardSaved, onCardDelete }) {
 
   const [isMoviesSeved, setMoviesSeved] = React.useState(false);
+  const [isCardDelete, setCardDelete] = React.useState(false);
   
   function handleMoviesSeved() {
     if (!isMoviesSeved) {
@@ -19,11 +20,12 @@ function MoviesCard({ movieCard, onCardSaved, onCardDelete }) {
   }
 
   function handleMoviesDelete() {
-    onCardDelete(movieCard.id);
+    onCardDelete(movieCard);
+    setCardDelete(true);
   }
 
 return (
-  <li className="movies-card" key={movieCard.id}>
+  <li className={!isCardDelete ? `movies-card` : `movies-card__delete`} key={movieCard.id}>
     <div className="movies-card__header">
       <div className="movies-card__info">
         <h2 className="movies-card__title">{movieCard.title}</h2>
@@ -31,10 +33,10 @@ return (
       </div>
       <Switch>
         <Route path="/movies">
-          <button className={!isMoviesSeved ? `movies-card__button_type_save` : `movies-card__button_type_save-active`} onClick={handleMoviesSeved} type="button"></button>
+          <button className={!isMoviesSeved ? `movies-card__button movies-card__button_type_save` : `movies-card__button movies-card__button_type_save-active`} onClick={handleMoviesSeved} type="button"></button>
         </Route>
         <Route path="/saved-movies">
-
+        <button className="movies-card__button movies-card__button_type_delete" onClick={handleMoviesDelete} type="button"></button>
         </Route>
       </Switch>
     </div>

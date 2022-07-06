@@ -8,6 +8,10 @@
   display: none;
 }
 
+.movies-card__delete {
+  display: none;
+}
+
 .movies-card__header {
   padding: 14px;
   display: flex;
