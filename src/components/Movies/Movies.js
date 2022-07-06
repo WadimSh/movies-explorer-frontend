@@ -5,8 +5,8 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 import './Movies.css';
 
-function Movies({ cardsList, onCardSaved, onCardDelete }) {
-  console.log(cardsList);
+function Movies({ cardsList, onCardSaved, onCardDelete, onMoreButton }) {
+  
   return (
     <main className="movies">
       <SearchForm />
@@ -14,6 +14,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
         cardsList={cardsList}
         onCardSaved={onCardSaved}
         onCardDelete={onCardDelete}
+        onMoreButton={onMoreButton}
       />
     </main>
   );

@@ -6,6 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
 
 function SavedMovies({ cardsList, onCardSaved, onCardDelete }) {
+  
   return (
     <main className="saved-movies">
     <SearchForm />

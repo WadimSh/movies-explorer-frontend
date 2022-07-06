@@ -17,7 +17,7 @@ import './App.css';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const saveCardsList = [];
 
   function handleSeveMovies(movieCard) {
@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="page">
       <Header 
-        loggedIn={loggedIn}
+        loggedIn={isLoggedIn}
       />
     
       <Switch>
@@ -53,6 +53,7 @@ function App() {
            cardsList={cardsList}
            onCardSaved={handleSeveMovies}
            onCardDelete={handleDeleteMovies}
+           onMoreButton={true}
           />
         </Route>
           
@@ -61,6 +62,7 @@ function App() {
           cardsList={saveCardsList}
           onCardSaved={handleSeveMovies}
           onCardDelete={handleDeleteMovies}
+          onMoreButton={false}
           />
         </Route>
           

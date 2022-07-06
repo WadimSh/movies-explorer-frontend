@@ -1,13 +1,13 @@
 import React from 'react';
-
+import { Route, Switch } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 import './MoviesCardList.css';
 
-function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete }) {
+function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete, onMoreButton }) {
   
   return (
-     <section className="movies-card-lis-container">
+     <section className="movies-card-list-container">
       <ul className="movies-card-list">
             {cardsList.map((movieCard) => (
               <MoviesCard
@@ -19,7 +19,10 @@ function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete })
             ))}
                
       </ul>
-      <button className="movies-card-list__more-button" type="button">Ещё</button>
+      <div className='movies-card-list__box'>
+        <button className={onMoreButton ? `movies-card-list__more-button` : `movies-card-list__more-button movies-card-list__more-button_unactive`} type="button">Ещё</button>
+      </div>
+            
     </section>
   )
 }
