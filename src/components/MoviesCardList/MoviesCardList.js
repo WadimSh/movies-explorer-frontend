@@ -7,7 +7,7 @@ import './MoviesCardList.css';
 function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete }) {
   
   return (
-     <div className="movies-card-lis-container">
+     <section className="movies-card-lis-container">
       <ul className="movies-card-list">
             {cardsList.map((movieCard) => (
               <MoviesCard
@@ -19,7 +19,8 @@ function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete })
             ))}
                
       </ul>
-    </div>
+      <button className="movies-card-list__more-button" type="button">Ещё</button>
+    </section>
   )
 }
 

@@ -14,7 +14,26 @@
   line-height: 0;
 }
 
+.movies-card-list__more-button {
+  margin: 0 auto;
+  border: none;
+  background: #F9F9F9;
+  border-radius: 6px;
+  width: 320px;
+  height: 36px;
+  padding: 0;
+  margin: 30px auto 80px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
 
+.movies-card-list__more-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
 @media screen and (max-width: 768px) {
   
