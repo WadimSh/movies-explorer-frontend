@@ -24,7 +24,6 @@ function App() {
     const seve = saveCardsList.includes(movieCard)
     if (!seve) {
         saveCardsList.push(movieCard);
-        console.log(saveCardsList)
       }
     }
   
@@ -33,7 +32,6 @@ function App() {
     const seve = saveCardsList.includes(movieCard)
     if (seve) {
         saveCardsList.splice(movieCard.id - 1, 1);
-        console.log(movieCard.id)
       }
   }
 
