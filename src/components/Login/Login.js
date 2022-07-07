@@ -22,7 +22,7 @@ function Login({ setLoggedIn }) {
 
   return(
     <form className="form" onSubmit={handleSubmit}>
-      <h3 className="form__title">Регистрация</h3>
+      <h3 className="form__title">Рады видеть!</h3>
       <input className="form__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} required />
       <input className="form__input" placeholder="Пароль" type="password" onChange={handlePasswordChange} value={password} required />
       <button className="form__button" type="submit">Войти</button>
