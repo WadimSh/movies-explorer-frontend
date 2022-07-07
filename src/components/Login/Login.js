@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Logo from '../../images/logo.svg';
 import './Login.css';
 
 function Login({ setLoggedIn }) {
@@ -21,16 +22,24 @@ function Login({ setLoggedIn }) {
   }
 
   return(
-    <form className="form" onSubmit={handleSubmit}>
-      <h3 className="form__title">Рады видеть!</h3>
-      <input className="form__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} required />
-      <input className="form__input" placeholder="Пароль" type="password" onChange={handlePasswordChange} value={password} required />
-      <button className="form__button" type="submit">Войти</button>
-      <p className="form__caption">
+    <section className='login'>
+      <form className="login__form" onSubmit={handleSubmit}>
+      <div className="header__wrap">
+          <Link to="/">
+            <img src={Logo} alt="Логотип сайта" />
+          </Link>
+        </div>
+      <h3 className="login__title">Рады видеть!</h3>
+      <input className="login__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
+      <input className="login__input" placeholder="Пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
+      <button className="login__button" type="submit">Войти</button>
+      <p className="login__caption">
         Ещё не зарегистрированы? 
-        <Link to="/signup" className="form__link"> Регистрация</Link>
+        <Link to="/signup" className="login__link"> Регистрация</Link>
       </p>
     </form>
+    </section>
+    
   )
 }
 

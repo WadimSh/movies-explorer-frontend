@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Logo from '../../images/logo.svg';
 import './Register.css';
 
 function Register() {
@@ -25,17 +26,25 @@ function Register() {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h3 className="form__title">Добро пожаловать!</h3>
-      <input className="form__input" placeholder="Name" type="text" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="40" required />
-      <input className="form__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
-      <input className="form__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
-      <button className="form__button" type="submit">Зарегистрироваться</button>
-      <p className="form__caption">
+    <section className='register'>
+      <form className="register__form" onSubmit={handleSubmit}>
+      <div className="header__wrap">
+          <Link to="/">
+            <img src={Logo} alt="Логотип сайта" />
+          </Link>
+        </div>
+      <h3 className="register__title">Добро пожаловать!</h3>
+      <input className="register__input" placeholder="Name" type="text" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="40" required />
+      <input className="register__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
+      <input className="register__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
+      <button className="register__button" type="submit">Зарегистрироваться</button>
+      <p className="register__caption">
       Уже зарегистрированы? 
-        <Link to="/signin" className="form__link"> Войти</Link>
+        <Link to="/signin" className="register__link"> Войти</Link>
       </p>
     </form>
+    </section>
+    
   )
 }
 
