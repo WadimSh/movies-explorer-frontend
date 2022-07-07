@@ -15,6 +15,7 @@
   .profile-form__title {
     margin: 0;
     padding: 74px 0 110px 0;
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -32,12 +33,13 @@
 
 .profile-form__label-text {
   padding: 16px 0;
+  font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
     line-height: 13px;
     color: #000000;
-    border-bottom: 1px solid #E8E8E8;
+    
   }
   
   .profile-form__label:last-of-type {
@@ -48,8 +50,9 @@
     flex-grow: 1;
     padding: 0;
     border:none;
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 11px;
     line-height: 13px;
     text-align: right;
@@ -65,8 +68,9 @@
     padding: 0;
     border: none;
     background-color: transparent;
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 13px;
     line-height: 16px;
     color: #000000;
@@ -77,6 +81,7 @@
     padding: 0;
     border: none;
     background-color: transparent;
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
