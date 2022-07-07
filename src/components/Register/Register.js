@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Logo from '../../images/logo.svg';
 import './Register.css';
 
-function Register() {
+function Register({ setLoggedIn }) {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -24,7 +24,8 @@ function Register() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    
+    history.push('/signin')
+    setLoggedIn(false)
   }
 
   return (
@@ -42,7 +43,7 @@ function Register() {
       <input className="register__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
       <label className='register__label'>Пароль</label>
       <input className="register__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
-      <button className="register__button" type="submit" onClick={() => history.push('/signin')}>Зарегистрироваться</button>
+      <button className="register__button" type="submit">Зарегистрироваться</button>
       <p className="register__caption">
       Уже зарегистрированы? 
         <Link to="/signin" className="register__link"> Войти</Link>

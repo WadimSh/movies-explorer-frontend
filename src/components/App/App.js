@@ -76,12 +76,14 @@ function App() {
           
         <Route path="/signin">
           <Login
-           setLoggedIn={setLoggedIn}
+           
           />
         </Route>
           
         <Route path="/signup">
-          <Register />
+          <Register
+          setLoggedIn={setLoggedIn}
+          />
         </Route>
           
         <Route path="*">

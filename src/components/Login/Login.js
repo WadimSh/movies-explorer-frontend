@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Logo from '../../images/logo.svg';
 import './Login.css';
 
-function Login({ setLoggedIn }) {
+function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const history = useHistory();
@@ -20,7 +20,7 @@ function Login({ setLoggedIn }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     history.push('/')
-    setLoggedIn(false)
+    
   }
 
   return(

@@ -1,9 +1,14 @@
 import React from 'react';
 import './SearchForm.css';
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  
+}
+
 function SearchForm() {
   return (
-    <section className="search-form">
+    <section className="search-form" onSubmit={handleSubmit}>
       <form className="search-form__form">
         <div className="search-form__input-wrap">
           <div className='search-from__icon'></div>
