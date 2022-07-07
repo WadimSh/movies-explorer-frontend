@@ -1,15 +1,16 @@
 import React from 'react';
 import './SearchForm.css';
 
+function SearchForm({ onTimeout }) {
+
 const handleSubmit = (e) => {
   e.preventDefault();
-  
+  onTimeout(true);
 }
 
-function SearchForm() {
   return (
-    <section className="search-form" onSubmit={handleSubmit}>
-      <form className="search-form__form">
+    <section className="search-form" >
+      <form className="search-form__form" onSubmit={handleSubmit}>
         <div className="search-form__input-wrap">
           <div className='search-from__icon'></div>
           <input className="search-form__input" type="text" placeholder="Фильм" autoComplete="off" required />
