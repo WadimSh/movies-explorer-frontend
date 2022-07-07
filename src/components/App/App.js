@@ -17,7 +17,7 @@ import './App.css';
 
 function App() {
 
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
+  const [isLoggedIn, setLoggedIn] = React.useState(true);
   
   const saveCardsList = [];
 
@@ -75,7 +75,9 @@ function App() {
         </Route>
           
         <Route path="/signin">
-          <Login />
+          <Login 
+            setLoggedIn={setLoggedIn}
+          />
         </Route>
           
         <Route path="/signup">
