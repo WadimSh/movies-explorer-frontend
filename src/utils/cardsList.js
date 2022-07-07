@@ -17,61 +17,73 @@ const carList = [
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard1,
+    check: false,
   }, {
     id: 2,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard2,
+    check: false,
   }, {
     id: 3,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard3,
+    check: false,
   }, {
     id: 4,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard4,
+    check: false,
   }, {
     id: 5,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard5,
+    check: false,
   }, {
     id: 6,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard6,
+    check: false,
   }, {
     id: 7,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard7,
+    check: false,
   }, {
     id: 8,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard8,
+    check: false,
   }, {
     id: 9,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard9,
+    check: false,
   }, {
     id: 10,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard10,
+    check: false,
   }, {
     id: 11,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard11,
+    check: false,
   }, {
     id: 12,
     title: '33 слова о дизайне',
     duration: '1ч 47м',
     image: movieCard12,
+    check: false,
   },
 ];
 

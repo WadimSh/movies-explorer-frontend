@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 import './MoviesCardList.css';
 
-function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete, onMoreButton }) {
+function MoviesCardList({ cardsList, onCardSaved, onCardDelete, onMoreButton }) {
   
   return (
      <section className="movies-card-list-container">
@@ -15,6 +15,7 @@ function MoviesCardList({ cardsList, saveCardsList, onCardSaved, onCardDelete, o
                 movieCard={movieCard}
                 onCardSaved={onCardSaved}
                 onCardDelete={onCardDelete}
+                
               />
             ))}
                

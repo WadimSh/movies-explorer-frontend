@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import './MoviesCard.css';
 
-function MoviesCard({ movieCard, onCardSaved, onCardDelete }) {
+function MoviesCard({ movieCard, onCardSaved, onCardDelete, onCheck }) {
 
-  const [isMoviesSeved, setMoviesSeved] = React.useState(false);
+  const [isMoviesSeved, setMoviesSeved] = React.useState(movieCard.check);
   const [isCardDelete, setCardDelete] = React.useState(false);
   
   function handleMoviesSeved() {

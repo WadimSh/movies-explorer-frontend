@@ -18,11 +18,13 @@ import './App.css';
 function App() {
 
   const [isLoggedIn, setLoggedIn] = React.useState(false);
+  
   const saveCardsList = [];
 
   function handleSeveMovies(movieCard) {
     const seve = saveCardsList.includes(movieCard)
     if (!seve) {
+        movieCard.check = true;
         saveCardsList.push(movieCard);
       }
     }
@@ -31,7 +33,9 @@ function App() {
   function handleDeleteMovies(movieCard) {
     const seve = saveCardsList.includes(movieCard)
     if (seve) {
-        saveCardsList.splice(movieCard.id - 1, 1);
+        movieCard.check = false;
+        const del = saveCardsList.indexOf(movieCard);
+        saveCardsList.splice(del, 1);
       }
   }
 
