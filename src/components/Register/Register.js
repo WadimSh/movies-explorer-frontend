@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Logo from '../../images/logo.svg';
 import './Register.css';
@@ -8,6 +8,7 @@ function Register() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const history = useHistory();
 
   function handleNameChange(evt) {
     setName(evt.target.value);
@@ -23,6 +24,7 @@ function Register() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    
   }
 
   return (
@@ -40,7 +42,7 @@ function Register() {
       <input className="register__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
       <label className='register__label'>Пароль</label>
       <input className="register__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
-      <button className="register__button" type="submit">Зарегистрироваться</button>
+      <button className="register__button" type="submit" onClick={() => history.push('/signin')}>Зарегистрироваться</button>
       <p className="register__caption">
       Уже зарегистрированы? 
         <Link to="/signin" className="register__link"> Войти</Link>
