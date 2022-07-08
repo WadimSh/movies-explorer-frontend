@@ -41,10 +41,13 @@ function Register({ setLoggedIn }) {
         <h2 className="register__title">Добро пожаловать!</h2>
         <label className="register__label">Имя</label>
         <input className="register__input" placeholder="Укажите Ваше имя" type="text" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="40" required />
+        <span className="register__error"> </span>
         <label className="register__label">E-mail</label>
         <input className="register__input" placeholder="Укажите Ваш e-mail" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
+        <span className="register__error"> </span>
         <label className="register__label">Пароль</label>
         <input className="register__input" placeholder="Введите пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
+        <span className="register__error"> </span>
         <button className="register__button" type="submit">Зарегистрироваться</button>
         <p className="register__caption">
           Уже зарегистрированы? 

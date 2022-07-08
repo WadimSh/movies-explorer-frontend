@@ -24,6 +24,8 @@ function App() {
   const handleSignOut = () => {
     setLoggedIn(true);
     history.push('/');
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
   }
 
   //функция сохранения карточки фильма
