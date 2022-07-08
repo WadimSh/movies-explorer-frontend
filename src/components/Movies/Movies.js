@@ -20,10 +20,10 @@ function Movies({ cardsList, onCardSaved, onCardDelete, onMoreButton }) {
       />
       {isSearchMovies ? <Preloader /> :
         <MoviesCardList 
-        cardsList={cardsList}
-        onCardSaved={onCardSaved}
-        onCardDelete={onCardDelete}
-        onMoreButton={onMoreButton}
+          cardsList={cardsList}
+          onCardSaved={onCardSaved}
+          onCardDelete={onCardDelete}
+          onMoreButton={onMoreButton}
         />}
     </main>
   );

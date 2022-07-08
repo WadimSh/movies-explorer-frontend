@@ -23,7 +23,7 @@ function Login() {
   }
 
   return(
-    <section className='login'>
+    <section className="login">
       <form className="login__form" onSubmit={handleSubmit}>
        <div className="login__wrap">
           <Link to="/">
@@ -31,7 +31,7 @@ function Login() {
           </Link>
         </div>
         <h3 className="login__title">Рады видеть!</h3>
-        <label className='login__label'>E-mail</label>
+        <label className="login__label">E-mail</label>
         <input className="login__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
         <label className='login__label'>Пароль</label>
         <input className="login__input" placeholder="Пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
