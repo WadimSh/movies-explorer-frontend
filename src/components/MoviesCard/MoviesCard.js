@@ -26,7 +26,7 @@ function MoviesCard({ movieCard, onCardSaved, onCardDelete, onCheck }) {
     <li className={!isCardDelete ? `movies-card` : `movies-card__delete`} key={movieCard.id}>
       <div className="movies-card__header">
         <div className="movies-card__info">
-          <h2 className="movies-card__title">{movieCard.title}</h2>
+          <h3 className="movies-card__title">{movieCard.title}</h3>
           <span className="movies-card__duration">{movieCard.duration}</span>
         </div>
         <Switch>
