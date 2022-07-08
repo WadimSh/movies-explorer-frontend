@@ -55,7 +55,7 @@
   border: none;
   background-image: url("./../../images/find.svg");
   background-repeat: no-repeat;
-  background-color: #f9f9f9;
+  background-color: transparent;
   border-right: 1px solid #E8E8E8;
 }
 
