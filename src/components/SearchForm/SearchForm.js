@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './SearchForm.css';
 
 function SearchForm({ onTimeout }) {
@@ -12,9 +13,9 @@ const handleSubmit = (e) => {
     <section className="search-form" >
       <form className="search-form__form" onSubmit={handleSubmit}>
         <div className="search-form__input-wrap">
-          <div className='search-from__icon'></div>
+          <div className="search-from__icon"></div>
           <input className="search-form__input" type="text" placeholder="Фильм" autoComplete="off" required />
-          <button className="search-form__submit" type="submit" ></button>
+          <button className="search-form__button" type="submit" ></button>
         </div>
         <div className="search-form__filter">
           <label className="filter-checkbox" >
@@ -25,7 +26,7 @@ const handleSubmit = (e) => {
         </div>
       </form>
     </section>
-  );
+  )
 }
 
 export default SearchForm;
