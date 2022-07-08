@@ -6,7 +6,6 @@
   margin: 0;
   padding-bottom: 23px;
   border-bottom: 1px solid #000000;
-  font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -21,7 +20,6 @@
 
 .about-project__subtitle {
   margin: 0;
-  font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -31,7 +29,6 @@
 .about-project__paragraph {
   margin: 0;
   padding-top: 26px;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -50,7 +47,6 @@
   height: 36px;
   padding: 9px 0;
   box-sizing: border-box;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -73,7 +69,6 @@
 
 .about-project__caption {
   padding-top: 14px;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
