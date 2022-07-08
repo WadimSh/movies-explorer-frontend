@@ -32,9 +32,9 @@ function Login() {
         </div>
         <h2 className="login__title">Рады видеть!</h2>
         <label className="login__label">E-mail</label>
-        <input className="login__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
+        <input className="login__input" placeholder="Укажите e-mail" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
         <label className='login__label'>Пароль</label>
-        <input className="login__input" placeholder="Пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
+        <input className="login__input" placeholder="Введите пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
         <button className="login__button" type="submit">Войти</button>
         <p className="login__caption">
           Ещё не зарегистрированы? 
