@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -18,8 +18,13 @@ import './App.css';
 function App() {
 
   const [isLoggedIn, setLoggedIn] = React.useState(true);
-  
+  const history = useHistory();
   const saveCardsList = [];
+
+  function handleSignOut() {
+    setLoggedIn(true);
+    history.push('/');
+  }
 
   function handleSeveMovies(movieCard) {
     const seve = saveCardsList.includes(movieCard)
@@ -71,7 +76,9 @@ function App() {
         </Route>
           
         <Route path="/profile">
-          <Profile />
+          <Profile
+          onSignOut={handleSignOut}
+          />
         </Route>
           
         <Route path="/signin">

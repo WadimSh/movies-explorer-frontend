@@ -50,6 +50,7 @@
 .register__input:hover,
 .register__input:focus,
 .register__input:active {
+  outline: none;
   border-bottom: 1px solid #3456F3;
 }
 

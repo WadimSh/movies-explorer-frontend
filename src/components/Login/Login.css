@@ -75,6 +75,7 @@
 .login__input:hover,
 .login__input:focus,
 .login__input:active {
+  outline: none;
   border-bottom: 1px solid #3456F3;
 }
 
