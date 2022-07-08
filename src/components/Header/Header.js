@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
 
@@ -13,7 +13,7 @@ function Header({ loggedIn }) {
         <header className="header">
           <div className="header__wrap">
             <Link to="/">
-              <img src={Logo} alt="Логотип сайта" />
+              <img src={Logo} alt="Логотип" />
             </Link>
             <Navigation loggedIn={loggedIn} />
           </div>
