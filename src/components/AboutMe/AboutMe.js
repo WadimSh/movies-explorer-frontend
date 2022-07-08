@@ -25,7 +25,7 @@ function AboutMe() {
         <img className="about-me__photo" src={Photo} alt="Фотография студента" />
       </div>
     </section>
-  );
+  )
 }
 
 export default AboutMe;

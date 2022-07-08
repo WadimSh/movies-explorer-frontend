@@ -9,14 +9,14 @@ function SavedMovies({ cardsList, onCardSaved, onCardDelete }) {
   
   return (
     <main className="saved-movies">
-    <SearchForm />
-    <MoviesCardList
-    cardsList={cardsList}
-    onCardSaved={onCardSaved}
-    onCardDelete={onCardDelete}
-    />
+      <SearchForm />
+      <MoviesCardList
+        cardsList={cardsList}
+        onCardSaved={onCardSaved}
+        onCardDelete={onCardDelete}
+      />
     </main>
-  );
+  )
 }
 
 export default SavedMovies;

@@ -12,7 +12,7 @@ function PageNotFound() {
       <p className="page-not-found__subtitle">Страница не найдена</p>
       <button className="page-not-found__back" onClick={() => history.goBack()} type="button">Назад</button>
     </section>
-  );
+  )
 }
 
 export default PageNotFound;

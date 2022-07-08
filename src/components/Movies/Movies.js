@@ -26,7 +26,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete, onMoreButton }) {
           onMoreButton={onMoreButton}
         />}
     </main>
-  );
+  )
 }
 
 export default Movies;

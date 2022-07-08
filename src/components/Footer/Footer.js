@@ -25,7 +25,7 @@ function Footer() {
         </div>
       </footer>
     </Route>
-  );
+  )
 }
 
 export default Footer;

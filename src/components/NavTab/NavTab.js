@@ -10,7 +10,7 @@ function NavTab() {
         <a href="#techs" className="nav-tab__link">Технологии</a>
         <a href="#about-me" className="nav-tab__link">Студент</a>
     </nav>
-  );
+  )
 }
 
 export default NavTab;
