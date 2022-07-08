@@ -5,7 +5,6 @@
 .footer__caption {
   margin: 0;
   padding: 20px 0;
-  font-family: 'Inter', Arial, sans-serif; ;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -23,12 +22,10 @@
 
 .footer__copyright {
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif; ;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  
 }
 
 .footer__links-list {
@@ -41,7 +38,6 @@
 }
 
 .footer__links-item {
-  font-family: 'Inter', Arial, sans-serif; ;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;

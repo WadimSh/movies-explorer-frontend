@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+
 import './Footer.css';
 
 function Footer() {
+
   return (
     <Route path="/(|movies|saved-movies)">
       <footer className="footer">
