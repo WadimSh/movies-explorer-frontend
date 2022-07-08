@@ -23,18 +23,18 @@ function Profile({ onSignOut }) {
 
   return (
     <section className="profile">
-      <form className="profile-form" onSubmit={handleSubmit}>
-        <h1 className="profile-form__title">Привет, Вадим!</h1>
-          <label className="profile-form__label">
-          <span className="profile-form__label-text">Имя</span>
-            <input id="name-input" type="text" name="name" placeholder="Имя" className="profile-form__input" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="30" required/>
+      <form className="profile__form" onSubmit={handleSubmit}>
+        <h2 className="profile__title">Привет, Вадим!</h2>
+          <label className="profile__label">
+          <span className="profile__label-text">Имя</span>
+            <input id="name-input" type="text" name="name" placeholder="Имя" className="profile__input" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="30" required/>
           </label>
-        <label className="profile-form__label">
-          <span className="profile-form__label-text">E-mail</span>
-          <input id="email-input" type="text" name="email" placeholder="E-mail" className="profile-form__input" onChange={handleEmailChange} value={email} autoComplete="off" required/>
+        <label className="profile__label">
+          <span className="profile__label-text">E-mail</span>
+          <input id="email-input" type="text" name="email" placeholder="E-mail" className="profile__input" onChange={handleEmailChange} value={email} autoComplete="off" required/>
         </label>
-        <button className="profile-form__submit" type="submit">Редактировать</button>
-        <button className="profile__logout" type="button" onClick={onSignOut}>Выйти из аккаунта</button>
+        <button className="profile__button" type="submit">Редактировать</button>
+        <button className="profile__button-out" type="button" onClick={onSignOut}>Выйти из аккаунта</button>
       </form>
     </section>
   )

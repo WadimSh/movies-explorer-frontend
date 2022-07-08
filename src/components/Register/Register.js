@@ -29,28 +29,27 @@ function Register({ setLoggedIn }) {
   }
 
   return (
-    <section className='register'>
+    <section className="register">
       <form className="register__form" onSubmit={handleSubmit}>
-      <div className="register__wrap">
+        <div className="register__wrap">
           <Link to="/">
             <img src={Logo} alt="Логотип сайта" />
           </Link>
         </div>
-      <h3 className="register__title">Добро пожаловать!</h3>
-      <label className='register__label'>Имя</label>
-      <input className="register__input" placeholder="Name" type="text" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="40" required />
-      <label className='register__label'>E-mail</label>
-      <input className="register__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
-      <label className='register__label'>Пароль</label>
-      <input className="register__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
-      <button className="register__button" type="submit">Зарегистрироваться</button>
-      <p className="register__caption">
-      Уже зарегистрированы? 
-        <Link to="/signin" className="register__link"> Войти</Link>
-      </p>
-    </form>
+        <h2 className="register__title">Добро пожаловать!</h2>
+        <label className="register__label">Имя</label>
+        <input className="register__input" placeholder="Name" type="text" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="40" required />
+        <label className="register__label">E-mail</label>
+        <input className="register__input" placeholder="Email" type="email" onChange={handleEmailChange} value={email} autoComplete="off" required />
+        <label className="register__label">Пароль</label>
+        <input className="register__input" placeholder="Password" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
+        <button className="register__button" type="submit">Зарегистрироваться</button>
+        <p className="register__caption">
+          Уже зарегистрированы? 
+          <Link to="/signin" className="register__link"> Войти</Link>
+        </p>
+      </form>
     </section>
-    
   )
 }
 
