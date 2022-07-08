@@ -10,20 +10,20 @@ function Register({ setLoggedIn }) {
   const [password, setPassword] = React.useState('');
   const history = useHistory();
 
-  function handleNameChange(evt) {
-    setName(evt.target.value);
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   }
   
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   }
 
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     history.push('/signin')
     setLoggedIn(false)
   }
