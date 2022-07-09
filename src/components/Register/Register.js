@@ -27,7 +27,7 @@ function Register({ setLoggedIn }) {
     localStorage.setItem('name', name);
     localStorage.setItem('email', email);
     history.push('/signin')
-    setLoggedIn(false)
+    setLoggedIn(true)
   }
 
   return (

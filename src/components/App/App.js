@@ -16,13 +16,13 @@ import cardsList from '../../utils/cardsList';
 import './App.css';
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = React.useState(true);
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const history = useHistory();
   const saveCardsList = [];
   
   //функция выхода из аккауна
   const handleSignOut = () => {
-    setLoggedIn(true);
+    setLoggedIn(false);
     history.push('/');
     localStorage.removeItem('name');
     localStorage.removeItem('email');

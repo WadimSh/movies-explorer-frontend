@@ -10,16 +10,19 @@ function Portfolio() {
         <h2 className="portfolio__title">Портфолио</h2>
         <ul className="portfolio__links-list">
           <li className="portfolio__links-item">
-            <a className="portfolio__link" href="https://github.com/wadimsh/putishestvie">Статичный сайт</a>
-            <p className="portfolio__link-icon">↗</p>
+            <a className="portfolio__link" href="https://github.com/wadimsh/putishestvie" target="_blank">Статичный сайт
+              <p className="portfolio__link-icon">↗</p>
+            </a>
           </li>
           <li className="portfolio__links-item">
-            <a className="portfolio__link" href="https://github.com/wadimsh/mesto-1">Адаптивный сайт</a>
-            <p className="portfolio__link-icon">↗</p>
+            <a className="portfolio__link" href="https://github.com/wadimsh/mesto-1" target="_blank">Адаптивный сайт
+              <p className="portfolio__link-icon">↗</p>
+            </a>
           </li>
           <li className="portfolio__links-item">
-            <a className="portfolio__link" href="https://github.com/wadimsh/react-mesto-api-full">Одностраничное приложение</a>
-            <p className="portfolio__link-icon">↗</p>
+            <a className="portfolio__link" href="https://github.com/wadimsh/react-mesto-api-full" target="_blank">Одностраничное приложение
+              <p className="portfolio__link-icon">↗</p>
+            </a>
           </li>
         </ul>
       </div>

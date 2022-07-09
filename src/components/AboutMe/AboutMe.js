@@ -15,10 +15,10 @@ function AboutMe() {
           <p className="about-me__description">Я&nbsp;живу в&nbsp;Москве, закончил факультет АСУ ВМИРЭ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку. Недавно решил освоить профессию веб-разработчика. Пока есть идеи как применить новые знания на&nbsp;текущей работе, а&nbsp;будущем возможно полностью перейду в&nbsp;программисты.</p>
           <ul className="about-me__links-list">
             <li>
-              <a className="about-me__links-item" href="https://www.facebook.com">Facebook</a>
+              <a className="about-me__links-item" href="https://www.facebook.com" target="_blank">Facebook</a>
             </li>
             <li>
-              <a className="about-me__links-item" href="https://github.com/WadimSh">Github</a>
+              <a className="about-me__links-item" href="https://github.com/WadimSh" target="_blank">Github</a>
             </li>
           </ul>
         </div>

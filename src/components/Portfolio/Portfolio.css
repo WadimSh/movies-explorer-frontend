@@ -23,8 +23,6 @@
 
 .portfolio__links-item {
   padding: 20px 0 19px;
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid #E8E8E8;
 }
 
@@ -44,6 +42,8 @@
   letter-spacing: -0.04em;
   color: #000;
   text-decoration: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 .portfolio__link-icon {
@@ -60,7 +60,15 @@
     padding: 0 50px 71px;
   }
 
-  .portfolio__link .portfolio__link-icon {
+  .portfolio__links-item {
+    padding: 20px 0 0;
+  }
+  
+  .portfolio__link {
+    font-size: 28px;
+  }
+
+  .portfolio__link-icon {
     font-size: 28px;
   }
 }
@@ -78,12 +86,12 @@
     padding-top: 20px;
   }
 
-  .portfolio__link, .portfolio__link-icon {
+  .portfolio__link {
     font-size: 18px;
-  line-height: 28px;
+    line-height: 28px;
   }
 
   .portfolio__link-icon {
-    width: 11px;
+    font-size: 18px;
   }
 }
