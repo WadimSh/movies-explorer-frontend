@@ -36,6 +36,12 @@
   opacity: 0.8;
 }
 
+.navigation__user-login:focus {
+  cursor: pointer;
+  transform: scale(.95);
+  opacity: 0.8;
+}
+
 .navigation__destop-menu {
   display: flex;
   align-items: center;

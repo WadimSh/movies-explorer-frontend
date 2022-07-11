@@ -121,7 +121,12 @@
 }
 
 .login__button:hover {
-  opacity: 0.85;
+  opacity: 0.8;
+}
+
+.login__button:focus {
+  transform: scale(.95);
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {

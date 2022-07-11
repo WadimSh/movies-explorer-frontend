@@ -25,6 +25,12 @@
   opacity: 0.8;
 }
 
+.nav-tab__link:focus {
+  cursor: pointer;
+  transform: scale(.95);
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 550px) {
   .nav-tab {
     width: 258px;

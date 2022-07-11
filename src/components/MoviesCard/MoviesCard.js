@@ -38,7 +38,7 @@ function MoviesCard({ movieCard, onCardSaved, onCardDelete, onCheck }) {
           </Route>
         </Switch>
       </div>
-      <a className="movies-card__link" href="#">
+      <a className="movies-card__link" href="#" target="_blank">
         <img className="movies-card__cover" src={movieCard.image} alt="Обложка фильма" />
       </a>
     </li>

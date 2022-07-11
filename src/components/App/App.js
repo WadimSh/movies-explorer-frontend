@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -10,6 +10,9 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import cardsList from '../../utils/cardsList';
 
@@ -17,6 +20,8 @@ import './App.css';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+
   const history = useHistory();
   const saveCardsList = [];
   
@@ -48,49 +53,60 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <Header 
-        loggedIn={isLoggedIn}
-      />
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/movies">
-          <Movies 
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <Header 
+          loggedIn={isLoggedIn}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <ProtectedRoute
+            path="/movies"
+            component={Movies}
+            loggedIn={isLoggedIn}
             cardsList={cardsList}
             onCardSaved={handleSeveMovies}
             onCardDelete={handleDeleteMovies}
             onMoreButton={true}
           />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies
+          <ProtectedRoute
+            path="/saved-movies"
+            component={SavedMovies}
+            loggedIn={isLoggedIn}
             cardsList={saveCardsList}
             onCardSaved={handleSeveMovies}
             onCardDelete={handleDeleteMovies}
             onMoreButton={false}
           />
-        </Route>
-        <Route path="/profile">
-          <Profile
+          <ProtectedRoute
+            path="/profile"
+            component={Profile}
+            loggedIn={isLoggedIn}
             onSignOut={handleSignOut}
           />
-        </Route>
-        <Route path="/signin">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <Register
-            setLoggedIn={setLoggedIn}
-          />
-        </Route>
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
+          <Route path="/signin">
+            {isLoggedIn ? <Redirect to="/" /> :
+              <Login
+                setLoggedIn={setLoggedIn}
+              />
+            }
+          </Route>
+          <Route path="/signup">
+            {isLoggedIn ? <Redirect to="/" /> :
+              <Register
+                setLoggedIn={setLoggedIn}
+              />
+            }
+          </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </CurrentUserContext.Provider>
   )
 }
 
