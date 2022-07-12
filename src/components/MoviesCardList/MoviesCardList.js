@@ -4,22 +4,34 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 import './MoviesCardList.css';
 
-function MoviesCardList({ cardsList, onCardSaved, onCardDelete, onMoreButton }) {
+function MoviesCardList({
+  movies,
+  cardsList,
+  onCardSaved,
+  onCardDelete,
+  isMoreButtonVisible,
+  onMoreButtonClick
+}) {
   
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__container">
-        {cardsList.map((movieCard) => (
+        {movies.map((movie) => (
           <MoviesCard
-            key={movieCard.id}
-            movieCard={movieCard}
+            key={movie.id || movie.movieId}
+            movie={movie}
+            cardsList={cardsList}
             onCardSaved={onCardSaved}
             onCardDelete={onCardDelete}
           />
         ))}
       </ul>
       <div className="movies-card-list__box">
-        <button className={onMoreButton ? `movies-card-list__more-button` : `movies-card-list__more-button movies-card-list__more-button_unactive`} type="button">Ещё</button>
+        <button
+          onClick={onMoreButtonClick}
+          className={isMoreButtonVisible ? `movies-card-list__more-button` : `movies-card-list__more-button movies-card-list__more-button_unactive`}
+          type="button"
+        >Ещё</button>
       </div>
     </section>
   )
