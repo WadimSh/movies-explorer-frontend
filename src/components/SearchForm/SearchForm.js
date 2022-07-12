@@ -22,6 +22,13 @@ function SearchForm({ onSearchMovies }) {
     onSearchMovies(query, checkboxStatus);
   }
 
+  React.useEffect(() => {
+    if (!query) {
+      const input = document.getElementById('queryInput');
+      input.setCustomValidity('Нужно ввести ключевое слово');
+    }
+  }, [query]);
+
   return (
     <section className="search-form" >
       <form className="search-form__form" onSubmit={handleSubmit}>
