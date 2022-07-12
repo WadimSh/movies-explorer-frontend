@@ -17,9 +17,13 @@ function SearchForm({ onSearchMovies }) {
     onSearchMovies(query, checkboxStatus);
   }
 
-  const handleCheckboxChange = (e) => {
-    setCheckboxStatus(e.target.checked);
+  const handleChange = (checkboxStatus) => {
+    setCheckboxStatus(checkboxStatus);
     onSearchMovies(query, checkboxStatus);
+  }
+
+  function handleCheckboxChange(evt) {
+    handleChange(evt.target.checked);
   }
 
   React.useEffect(() => {
@@ -46,7 +50,7 @@ function SearchForm({ onSearchMovies }) {
           />
           <button className="search-form__button" type="submit" ></button>
         </div>
-        <div className="search-form__filter">
+        <div className="search-form__filter" >
           <label
             className="filter-checkbox"
             onClick={handleCheckboxChange}
