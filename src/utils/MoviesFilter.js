@@ -1,4 +1,4 @@
-function MoviesFilter(movies, query, checkboxStatus) {
+function moviesFilter(movies, query, checkboxStatus) {
     let moviesFilter = movies;
     let result;
   
@@ -12,4 +12,4 @@ function MoviesFilter(movies, query, checkboxStatus) {
     return result;
   }
   
-  export default MoviesFilter;
+  export default moviesFilter;
