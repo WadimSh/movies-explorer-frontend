@@ -1,10 +1,11 @@
 import React from 'react';
-
+import { useLocation } from 'react-router-dom';
 import './SearchForm.css';
 
 function SearchForm({ onSearchMovies }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
+  const location = useLocation();
 
   const handleQueryChange = (e) => {
     const input = document.getElementById('queryInput');
@@ -15,6 +16,7 @@ function SearchForm({ onSearchMovies }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearchMovies(query, checkboxStatus);
+   
   }
 
   const handleChange = (checkboxStatus) => {
@@ -22,8 +24,8 @@ function SearchForm({ onSearchMovies }) {
     onSearchMovies(query, checkboxStatus);
   }
 
-  function handleCheckboxChange(evt) {
-    handleChange(evt.target.checked);
+  const handleCheckboxChange = (e) => {
+    handleChange(e.target.checked);
   }
 
   React.useEffect(() => {
@@ -31,7 +33,7 @@ function SearchForm({ onSearchMovies }) {
       const input = document.getElementById('queryInput');
       input.setCustomValidity('Нужно ввести ключевое слово');
     }
-  }, [query]);
+  }, [query])
 
   return (
     <section className="search-form" >

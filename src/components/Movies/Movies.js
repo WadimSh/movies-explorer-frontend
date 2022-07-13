@@ -11,7 +11,7 @@ import './Movies.css';
 
 function Movies({ cardsList, onCardSaved, onCardDelete }) {
   //переменная в которой записан текст запроса из поисковой стороки
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState(localStorage.getItem('query') || '');
   //массив с отображаемым колличеством карточек
   const [moviesToRender, setMoviesToRender] = React.useState([]);
   //массив с исходным колличеством фильмов
@@ -35,12 +35,13 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   const currentViewport = document.documentElement.clientWidth;
   //основная функция передаваемая для запуска в форму поиска
   const handleSearch = (query, checkboxStatus) => {
+    
     setMoviesToRender([]);
     setQuery(query);
     setCheckboxStatus(checkboxStatus);
-
+        
     const initialMoviesInLocalStorage = JSON.parse(localStorage.getItem('initialMovies'));
-
+    
     if (!initialMoviesInLocalStorage) {
       setSearchMovies(true);
       moviesApi.getMovies()
@@ -56,6 +57,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
         })
     } else {
       setInitialMovies(initialMoviesInLocalStorage);
+      
     }
   }
   //эффект который осуществляет поиск и фильтрацию из исходного массива
@@ -63,9 +65,10 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     if (initialMovies.length > 0) {
       const searchResults = moviesFilter(initialMovies, query, checkboxStatus);
       setFilteredMovies(searchResults);
-      setIsSearchDone(true);      
+      setIsSearchDone(true);
     }
   }, [initialMovies, query, checkboxStatus]);
+
   //эффект определения отображения карточек взависимости от ширены экрана
   React.useEffect(() => {
     if (currentViewport <= 480) {
@@ -83,18 +86,16 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   React.useEffect(() => {
     if (filteredMovies.length > 0) {
       if (filteredMovies.length > firstResultsNumber) {
-        
         setMoviesToRender(filteredMovies.slice(0, firstResultsNumber));
         setIsMoreButtonVisible(true);
       } else {
         setMoviesToRender(filteredMovies);
-        
       }
       
     }
   }, [filteredMovies, firstResultsNumber]);
   //функция работы кнопки ещё
-  function handleMoreButtonClick() {
+  const handleMoreButtonClick = () => {
     setMoviesToRender((state) => filteredMovies.slice(0, state.length + moreResultsNumber));
     
   }
