@@ -1,12 +1,11 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+
 import './SearchForm.css';
 
 function SearchForm({ onSearchMovies }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
-  const location = useLocation();
-
+  
   const handleQueryChange = (e) => {
     const input = document.getElementById('queryInput');
     input.setCustomValidity('');
