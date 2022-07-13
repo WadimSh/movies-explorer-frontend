@@ -39,6 +39,7 @@ function SavedMovies({ cardsList, onCardDelete }) {
         ? <MoviesCardList
             movies={filteredMovies}
             onCardDelete={onCardDelete}
+            isMoreButtonVisible={false}
           />
         : (
           <span className="saved-movies__nothing-found">

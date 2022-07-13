@@ -23,11 +23,10 @@ import './App.css';
 function App() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [savedMoviesUser, setSavedMoviesUser] =  React.useState([]);
 
   const history = useHistory();
-  
-
-  
+   
   const handleRegister = (name, email, password) => {
     
     api.register(name, email, password)
@@ -69,6 +68,31 @@ function App() {
         console.log(err);
       })
   }
+
+  const handleCardSave = (movie) => {
+   
+    api.postMovies(movie)
+      .then((newMovie) => {
+        setSavedMoviesUser((movies) => [
+          newMovie,
+          ...movies
+        ]);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  const handleCardDelete = (movie) => {
+    
+    api.deleteMovies(movie)
+      .then(() => {
+        setSavedMoviesUser((movies) => movies.filter((m) => m._id !== movie._id));
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   
   React.useEffect(() => {
     if (isLoggedIn) {
@@ -83,25 +107,20 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  //***
-  const saveCardsList = [];
-  //функция сохранения карточки фильма
-  const handleSeveMovies = (movieCard) => {
-    const seach = saveCardsList.includes(movieCard)
-    if (!seach) {
-      movieCard.check = true;
-      saveCardsList.push(movieCard);
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      api.getMovies(jwt)
+        .then((data) => {
+          setSavedMoviesUser(data.filter((i) => i.owner === currentUser._id));
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
-  }
-  //функция удаления карточки фильма
-  const handleDeleteMovies = (movieCard) => {
-    const seach = saveCardsList.includes(movieCard)
-    if (seach) {
-      movieCard.check = false;
-      const del = saveCardsList.indexOf(movieCard);
-      saveCardsList.splice(del, 1);
-    }
-  }
+  }, [currentUser]);
+
+  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -117,19 +136,16 @@ function App() {
             path="/movies"
             component={Movies}
             loggedIn={isLoggedIn}
-            cardsList={cardsList}
-            onCardSaved={handleSeveMovies}
-            onCardDelete={handleDeleteMovies}
-            onMoreButton={true}
+            cardsList={savedMoviesUser}
+            onCardSaved={handleCardSave}
+            onCardDelete={handleCardDelete}
           />
           <ProtectedRoute
             path="/saved-movies"
             component={SavedMovies}
             loggedIn={isLoggedIn}
-            cardsList={saveCardsList}
-            onCardSaved={handleSeveMovies}
-            onCardDelete={handleDeleteMovies}
-            onMoreButton={false}
+            cardsList={savedMoviesUser}
+            onCardDelete={handleCardDelete}
           />
           <ProtectedRoute
             path="/profile"

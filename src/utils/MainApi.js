@@ -1,4 +1,4 @@
-import { USERS_URL, MOVIES_URL } from './constants';
+import { USERS_URL, MOVIES } from './constants';
 
 class MainApi {
     constructor({ baseUrl }) {
@@ -70,24 +70,12 @@ class MainApi {
       return fetch(`${this.url}/movies`, {
         method: "POST",
         headers: this._headers,
-        body: JSON.stringify({
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: `${MOVIES_URL}${movie.image.url}`,
-            trailerLink: movie.trailerLink,
-            thumbnail: `${MOVIES_URL}${movie.image.formats.thumbnail.url}`,
-            movieId: movie.id,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-        }),
+        body: JSON.stringify(movie),
       }).then(this._checkResponse);
     }
 
     deleteMovies(movie) {
-      return fetch(`${this.url}/cards/${movie._id}`, {
+      return fetch(`${this.url}/movies/${movie._id}`, {
         method: "DELETE",
         headers: this._headers,
       }).then(this._checkResponse);

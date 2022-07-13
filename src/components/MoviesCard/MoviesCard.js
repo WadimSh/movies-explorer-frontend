@@ -13,12 +13,25 @@ function MoviesCard({
   onCardDelete 
 }) {
   const isSaved = movie.id && cardsList.some((m) => m.movieId === movie.id);
-
+  
   const handleMoviesSeved = () => {
     if (isSaved) {
       onCardDelete(cardsList.filter((m) => m.movieId === movie.id)[0]);
     } else if (!isSaved) {
-      onCardSaved(movie);
+      console.log(movie.image.url)
+      onCardSaved({
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: `${MOVIES}${movie.image.url}`,
+            trailerLink: movie.trailerLink,
+            thumbnail: `${MOVIES}${movie.image.formats.thumbnail.url}`,
+            movieId: movie.id,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+      });
     }
   }
   
@@ -43,7 +56,24 @@ function MoviesCard({
         </Switch>
       </div>
       <a className="movies-card__link" href={movie.trailerLink} target="_blank">
-        <img className="movies-card__cover" src={`${MOVIES}${movie.image.url}`} alt="Обложка фильма" />
+      <Switch>
+          <Route path="/movies">
+            <img
+              className="movies-card__cover"
+              src={`${MOVIES}${movie.image.url}`}
+              alt="Обложка фильма"
+            />
+          </Route>
+          <Route path="/saved-movies">
+            <img
+              className="movies-card__cover"
+              src={movie.image}
+              alt="Обложка фильма"
+            />
+          </Route>
+        </Switch>
+        
+        
       </a>
     </li>
   )
