@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './Profile.css';
 
-function Profile({ onSignOut }) {
+function Profile({ onSignOut, onProfileEdit }) {
   const currentUser = React.useContext(CurrentUserContext);
   
   const [name, setName] = React.useState(currentUser.name);
@@ -19,7 +19,10 @@ function Profile({ onSignOut }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-        
+    onProfileEdit({
+      name,
+      email,
+    });
   }
 
   return (

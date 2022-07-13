@@ -57,6 +57,18 @@ function App() {
     localStorage.removeItem('jwt');
     history.push('/');
   }
+
+  const handleProfileEdit = (user) => {
+    
+    api.patchUser(user)
+      .then((newUser) => {
+        setCurrentUser(newUser);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
   
   React.useEffect(() => {
     if (isLoggedIn) {
@@ -124,6 +136,7 @@ function App() {
             component={Profile}
             loggedIn={isLoggedIn}
             onSignOut={handleSignOut}
+            onProfileEdit={handleProfileEdit}
           />
           <Route path="/signin">
             {isLoggedIn ? <Redirect to="/" /> :
