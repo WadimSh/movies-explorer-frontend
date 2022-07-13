@@ -1,14 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './Profile.css';
 
 function Profile({ onSignOut }) {
-  const currentUser = localStorage.getItem('name');
-  const [name, setName] = React.useState(localStorage.getItem('name'));
-  const [email, setEmail] = React.useState(localStorage.getItem('email'));
-  const history = useHistory();
+  const currentUser = React.useContext(CurrentUserContext);
   
+  const [name, setName] = React.useState(currentUser.name);
+  const [email, setEmail] = React.useState(currentUser.email);
+    
   const handleNameChange = (e) => {
     setName(e.target.value);
   }
@@ -19,15 +19,13 @@ function Profile({ onSignOut }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
-    history.goBack();
+        
   }
 
   return (
     <section className="profile">
       <form className="profile__form" onSubmit={handleSubmit}>
-        <h2 className="profile__title">Привет, {currentUser}!</h2>
+        <h2 className="profile__title">Привет, {currentUser.name}!</h2>
           <label className="profile__label">
           <span className="profile__label-text">Имя</span>
             <input id="name-input" type="text" name="name" placeholder="Укажите Ваше имя" className="profile__input" onChange={handleNameChange} value={name} autoComplete="off" minLength="2" maxLength="30" required/>

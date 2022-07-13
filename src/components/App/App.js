@@ -12,6 +12,8 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import api from '../../utils/MainApi';
+
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import cardsList from '../../utils/cardsList';
@@ -23,16 +25,54 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const history = useHistory();
-  const saveCardsList = [];
   
-  //функция выхода из аккауна
-  const handleSignOut = () => {
-    setLoggedIn(false);
-    history.push('/');
-    localStorage.removeItem('name');
-    localStorage.removeItem('email');
+
+  
+  const handleRegister = (name, email, password) => {
+    
+    api.register(name, email, password)
+      .then(() => {
+        handleLogin(email, password);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
+  const handleLogin = (email, password) => {
+
+    api.authorization(email, password)
+      .then(res => {
+        localStorage.setItem('jwt', res.token);
+        setLoggedIn(true);
+        history.push('/movies');
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const handleSignOut = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    history.push('/');
+  }
+  
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      const jwt = localStorage.getItem('jwt');
+      api.getUser()
+        .then((user) => {
+          setCurrentUser(user);
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    }
+  }, [isLoggedIn]);
+
+  //***
+  const saveCardsList = [];
   //функция сохранения карточки фильма
   const handleSeveMovies = (movieCard) => {
     const seach = saveCardsList.includes(movieCard)
@@ -41,7 +81,6 @@ function App() {
       saveCardsList.push(movieCard);
     }
   }
-
   //функция удаления карточки фильма
   const handleDeleteMovies = (movieCard) => {
     const seach = saveCardsList.includes(movieCard)
@@ -89,14 +128,14 @@ function App() {
           <Route path="/signin">
             {isLoggedIn ? <Redirect to="/" /> :
               <Login
-                setLoggedIn={setLoggedIn}
+                onLogin={handleLogin}
               />
             }
           </Route>
           <Route path="/signup">
             {isLoggedIn ? <Redirect to="/" /> :
               <Register
-                setLoggedIn={setLoggedIn}
+                onRegister={handleRegister}
               />
             }
           </Route>

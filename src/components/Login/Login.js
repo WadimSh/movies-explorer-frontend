@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Logo from '../../images/logo.svg';
 import './Login.css';
 
-function Login({ setLoggedIn }) {
+function Login({ onLogin }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const history = useHistory();
-
+ 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -19,8 +18,7 @@ function Login({ setLoggedIn }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/');
-    setLoggedIn(true);
+    onLogin(email, password);
   }
 
   return(

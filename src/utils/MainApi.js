@@ -17,12 +17,12 @@ class MainApi {
       if (res.ok) {
         return res.json();
       } else {
-        return Promise.reject(`Ошибка ${res.status}`);
+        return Promise.reject(res.status);
       }
     }
 
     register = (name, email, password) => {
-        return fetch(`${BASE_URL}/signup`, {
+        return fetch(`${this.url}/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ class MainApi {
     }
 
     authorization = (email, password) => {
-        return fetch(`${BASE_URL}/signin`, {
+        return fetch(`${this.url}/signin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
