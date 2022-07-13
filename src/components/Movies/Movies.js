@@ -66,6 +66,13 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       const searchResults = moviesFilter(initialMovies, query, checkboxStatus);
       setFilteredMovies(searchResults);
       setIsSearchDone(true);
+      localStorage.setItem('searchResults', JSON.stringify(searchResults));
+      localStorage.setItem('query', query);
+      localStorage.setItem('checkboxStatus', checkboxStatus);
+      const ini = JSON.parse(localStorage.getItem('searchResults'));
+      console.log(ini);
+      console.log(localStorage.getItem('query', query));
+      console.log(localStorage.getItem('checkboxStatus', checkboxStatus));
     }
   }, [initialMovies, query, checkboxStatus]);
 
