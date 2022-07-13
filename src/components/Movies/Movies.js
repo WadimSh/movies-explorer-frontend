@@ -11,7 +11,7 @@ import './Movies.css';
 
 function Movies({ cardsList, onCardSaved, onCardDelete }) {
   //переменная в которой записан текст запроса из поисковой стороки
-  const [query, setQuery] = React.useState(localStorage.getItem('query') || '');
+  const [query, setQuery] = React.useState('');
   //массив с отображаемым колличеством карточек
   const [moviesToRender, setMoviesToRender] = React.useState([]);
   //массив с исходным колличеством фильмов
@@ -33,15 +33,34 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   const [moreResultsNumber, setMoreResultsNumber] = React.useState(0);
   //переменная в которую записана текущая ширина экрана
   const currentViewport = document.documentElement.clientWidth;
+
+  React.useEffect(() => {
+    if (localStorage.getItem('query')) {
+      setQuery(localStorage.getItem('query'));
+      setCheckboxStatus(localStorage.getItem('checkboxStatus'));
+      const init = JSON.parse(localStorage.getItem('searchResults'));
+      const searchResult = moviesFilter(init, query, checkboxStatus);
+      setFilteredMovies(searchResult);
+      setIsSearchDone(true);
+    }
+    //if (localStorage.getItem('checkboxStatus')) {
+    //  setQuery(localStorage.getItem('query'));
+    //  setCheckboxStatus(localStorage.getItem('checkboxStatus'));
+    //  const init = JSON.parse(localStorage.getItem('searchResults'));
+    //  const searchResult = moviesFilter(init, query, checkboxStatus);
+    //  setFilteredMovies(searchResult);
+    //  setIsSearchDone(true);
+    //}
+  }, [])
+
   //основная функция передаваемая для запуска в форму поиска
   const handleSearch = (query, checkboxStatus) => {
-    
     setMoviesToRender([]);
     setQuery(query);
     setCheckboxStatus(checkboxStatus);
-        
+
     const initialMoviesInLocalStorage = JSON.parse(localStorage.getItem('initialMovies'));
-    
+
     if (!initialMoviesInLocalStorage) {
       setSearchMovies(true);
       moviesApi.getMovies()
@@ -57,7 +76,6 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
         })
     } else {
       setInitialMovies(initialMoviesInLocalStorage);
-      
     }
   }
   //эффект который осуществляет поиск и фильтрацию из исходного массива
@@ -66,16 +84,11 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       const searchResults = moviesFilter(initialMovies, query, checkboxStatus);
       setFilteredMovies(searchResults);
       setIsSearchDone(true);
-      localStorage.setItem('searchResults', JSON.stringify(searchResults));
       localStorage.setItem('query', query);
       localStorage.setItem('checkboxStatus', checkboxStatus);
-      const ini = JSON.parse(localStorage.getItem('searchResults'));
-      console.log(ini);
-      console.log(localStorage.getItem('query', query));
-      console.log(localStorage.getItem('checkboxStatus', checkboxStatus));
+      localStorage.setItem('searchResults', JSON.stringify(searchResults));
     }
   }, [initialMovies, query, checkboxStatus]);
-
   //эффект определения отображения карточек взависимости от ширены экрана
   React.useEffect(() => {
     if (currentViewport <= 480) {
@@ -93,16 +106,18 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   React.useEffect(() => {
     if (filteredMovies.length > 0) {
       if (filteredMovies.length > firstResultsNumber) {
+        
         setMoviesToRender(filteredMovies.slice(0, firstResultsNumber));
         setIsMoreButtonVisible(true);
       } else {
         setMoviesToRender(filteredMovies);
+        
       }
       
     }
   }, [filteredMovies, firstResultsNumber]);
   //функция работы кнопки ещё
-  const handleMoreButtonClick = () => {
+  function handleMoreButtonClick() {
     setMoviesToRender((state) => filteredMovies.slice(0, state.length + moreResultsNumber));
     
   }
@@ -117,6 +132,8 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     <main className="movies">
       <SearchForm
         onSearchMovies={handleSearch}
+        onQuery={query}
+        onCheckboxStatus={checkboxStatus}
       />
       {isSearchMovies 
         ? <Preloader /> 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies }) {
+function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   
@@ -26,6 +26,16 @@ function SearchForm({ onSearchMovies }) {
   const handleCheckboxChange = (e) => {
     handleChange(e.target.checked);
   }
+
+  React.useEffect(() => {
+    setQuery(onQuery);
+    
+  }, [onQuery])
+
+  React.useEffect(() => {
+    console.log(onCheckboxStatus)
+    setCheckboxStatus(onCheckboxStatus);
+  }, [onCheckboxStatus])
 
   React.useEffect(() => {
     if (!query) {
@@ -57,11 +67,12 @@ function SearchForm({ onSearchMovies }) {
             onClick={handleCheckboxChange}
           >
             <input
-              defaultChecked={checkboxStatus}
+              defaultChecked={false}
+              onChange={() => setCheckboxStatus(!checkboxStatus)}
               className="filter-checkbox__invisible-checkbox"
               type="checkbox"
             />
-            <span className="filter-checkbox__pseudo-checkbox"></span>
+            <span className={!checkboxStatus ? "filter-checkbox__pseudo-checkbox" : "filter-checkbox__pseudo-checkboxon"}></span>
             <span className="filter-checkbox-label-text">Короткометражки</span>
           </label>
         </div>
