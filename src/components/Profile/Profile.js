@@ -8,17 +8,8 @@ function Profile({ onSignOut, onProfileEdit, isSending, requestStatus: { message
   const currentUser = React.useContext(CurrentUserContext);
   const { values, handleChange, resetFrom, isValid } = useFormWithValidation();
   const [requestStatusText, setRequestStatusText] = React.useState('');
-  //const [name, setName] = React.useState(currentUser.name);
-  //const [email, setEmail] = React.useState(currentUser.email);
-  const isDisabled = !isValid || isSending;
-
-  //const handleNameChange = (e) => {
-  //  setName(e.target.value);
-  //}
   
-  //const handleEmailChange = (e) => {
-  //  setEmail(e.target.value);
-  //}
+  const isDisabled = !isValid || isSending;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +41,7 @@ function Profile({ onSignOut, onProfileEdit, isSending, requestStatus: { message
           <span className="profile__label-text">E-mail</span>
           <input id="email-input" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Укажите новый e-mail" className="profile__input" onChange={handleChange} value={values.email || ''} autoComplete="off" required/>
         </label>
-        <button className="profile__button" type="submit">Редактировать</button>
+        <button disabled={isDisabled} className="profile__button" type="submit">Редактировать</button>
         <button className="profile__button-out" type="button" onClick={onSignOut}>Выйти из аккаунта</button>
       </form>
     </section>

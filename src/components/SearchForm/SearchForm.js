@@ -3,20 +3,18 @@ import { useLocation } from 'react-router-dom';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
+function SearchForm({ onSearchMovies }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   let location = useLocation();
   let queryItem = localStorage.getItem('query');
-    let checkboxItem = localStorage.getItem('checkboxStatus');
-
+  
   React.useEffect(() => {
     
     if (localStorage.getItem('query')) {
       setQuery(queryItem);
-      console.log(query)
-      setCheckboxStatus(checkboxItem);
-      console.log(checkboxStatus)
+      console.log(queryItem)
+      
     }
     
   }, [location.pathname === '/movies']);
@@ -57,7 +55,7 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
           <div className="search-from__icon"></div>
           <input
             id="queryInput"
-            value={query || ''}
+            value={query}
             onChange={handleQueryChange}
             className="search-form__input"
             type="text"
@@ -73,11 +71,11 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
             onClick={handleCheckboxChange}
           >
             <input
-              
+              defaultChecked={checkboxStatus}
               className="filter-checkbox__invisible-checkbox"
               type="checkbox"
             />
-            <span className={!checkboxStatus ? "filter-checkbox__pseudo-checkbox" : "filter-checkbox__pseudo-checkboxon"}></span>
+            <span className={"filter-checkbox__pseudo-checkbox"}></span>
             <span className="filter-checkbox-label-text">Короткометражки</span>
           </label>
         </div>

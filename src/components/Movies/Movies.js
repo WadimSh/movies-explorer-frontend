@@ -122,8 +122,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     <main className="movies">
       <SearchForm
         onSearchMovies={handleSearch}
-        onQuery={query}
-        onCheckboxStatus={checkboxStatus}
+        
       />
       {isSearchMovies 
         ? <Preloader /> 
