@@ -54,6 +54,11 @@ function App() {
   const handleSignOut = () => {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
+    localStorage.removeItem('initialMovies');
+    localStorage.removeItem('query');
+    localStorage.removeItem('checkboxStatus');
+    localStorage.removeItem('searchResults');
+
     history.push('/');
   }
 

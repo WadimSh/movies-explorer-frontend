@@ -18,19 +18,18 @@ function MoviesCard({
     if (isSaved) {
       onCardDelete(cardsList.filter((m) => m.movieId === movie.id)[0]);
     } else if (!isSaved) {
-      console.log(movie.image.url)
       onCardSaved({
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: `${MOVIES}${movie.image.url}`,
-            trailerLink: movie.trailerLink,
-            thumbnail: `${MOVIES}${movie.image.formats.thumbnail.url}`,
-            movieId: movie.id,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: `${MOVIES}${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `${MOVIES}${movie.image.formats.thumbnail.url}`,
+        movieId: movie.id,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
       });
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
+function SearchForm({ onSearchMovies }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   
@@ -27,10 +27,6 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
   const handleCheckboxChange = (e) => {
     handleChange(e.target.checked);
   }
-
-  React.useEffect(() => {
-    setQuery(onQuery);
-  }, [])
 
   React.useEffect(() => {
     if (!query) {
