@@ -42,6 +42,16 @@ class MainApi {
         })
         .then(this._checkResponse)
     }
+
+    validityToken = (token) => {
+      return fetch(`${this.url}/users/me`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization" : `Bearer ${token}`
+        } 
+      })
+      .then(this._checkResponse)
+    }
   
     getUser() {
       return fetch(`${this.url}/users/me`, {

@@ -51,16 +51,22 @@ function App() {
       })
   }
 
-  const handleSignOut = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('initialMovies');
-    localStorage.removeItem('query');
-    localStorage.removeItem('checkboxStatus');
-    localStorage.removeItem('searchResults');
-
-    history.push('/');
-  }
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if(jwt) {
+      
+    api.validityToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+        }
+        history.push('/movies');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, []);
 
   const handleProfileEdit = (user) => {
     
@@ -98,10 +104,21 @@ function App() {
         console.log(err)
       })
   }
+
+  const handleSignOut = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('initialMovies');
+    localStorage.removeItem('query');
+    localStorage.removeItem('checkboxStatus');
+    localStorage.removeItem('searchResults');
+
+    history.push('/');
+  }
   
   React.useEffect(() => {
     if (isLoggedIn) {
-      const jwt = localStorage.getItem('jwt');
+      
       api.getUser()
         .then((user) => {
           setCurrentUser(user);
