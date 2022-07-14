@@ -1,11 +1,26 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies }) {
+function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
-  
+  let location = useLocation();
+  let queryItem = localStorage.getItem('query');
+    let checkboxItem = localStorage.getItem('checkboxStatus');
+
+  React.useEffect(() => {
+    
+    if (localStorage.getItem('query')) {
+      setQuery(queryItem);
+      console.log(query)
+      setCheckboxStatus(checkboxItem);
+      console.log(checkboxStatus)
+    }
+    
+  }, [location.pathname === '/movies']);
+
   const handleQueryChange = (e) => {
     const input = document.getElementById('queryInput');
     input.setCustomValidity('');
@@ -58,11 +73,11 @@ function SearchForm({ onSearchMovies }) {
             onClick={handleCheckboxChange}
           >
             <input
-              defaultChecked={checkboxStatus}
+              
               className="filter-checkbox__invisible-checkbox"
               type="checkbox"
             />
-            <span className="filter-checkbox__pseudo-checkbox"></span>
+            <span className={!checkboxStatus ? "filter-checkbox__pseudo-checkbox" : "filter-checkbox__pseudo-checkboxon"}></span>
             <span className="filter-checkbox-label-text">Короткометражки</span>
           </label>
         </div>

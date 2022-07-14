@@ -36,8 +36,6 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
 
   React.useEffect(() => {
     if (localStorage.getItem('query')) {
-      //setQuery(localStorage.getItem('query'));
-      //setCheckboxStatus(localStorage.getItem('checkboxStatus'));
       const init = JSON.parse(localStorage.getItem('searchResults'));
       const searchResult = moviesFilter(init, query, checkboxStatus);
       setFilteredMovies(searchResult);
@@ -124,7 +122,8 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     <main className="movies">
       <SearchForm
         onSearchMovies={handleSearch}
-        
+        onQuery={query}
+        onCheckboxStatus={checkboxStatus}
       />
       {isSearchMovies 
         ? <Preloader /> 
