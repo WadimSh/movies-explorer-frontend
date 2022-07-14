@@ -25,10 +25,10 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesUser, setSavedMoviesUser] =  React.useState([]);
 
-  const [isRegisterSending, setRegisterSending] = React.useState(false);
+  const [isRegisterSending, setRegisterSending] = React.useState(true);
   const [isRegisterStatus, setRegisterStatus] = React.useState({});
 
-  const [isLoginSending, setLoginSending] = React.useState(false);
+  const [isLoginSending, setLoginSending] = React.useState(true);
   const [isLoginStatus, setLoginStatus] = React.useState({});
 
   const [isProfileSending, setProfileSending] = React.useState(false);
@@ -36,11 +36,15 @@ function App() {
 
   const history = useHistory();
    
-  const handleRegister = (name, email, password) => {
-    setRegisterSending(true);
-    api.register(name, email, password)
-      .then(() => {
-        handleLogin(email, password);
+  const handleRegister = (user) => {
+    setRegisterSending(false);
+    api.register(user)
+      .then((res) => {
+        console.log(res)
+        handleLogin({
+          email: res.email,
+          password: res.password,
+        });
       })
       .catch(err => {
         if (err.statusCode === 409) {
@@ -54,13 +58,13 @@ function App() {
         }
       })
       .finally(() => {
-        setRegisterSending(false);
+        setRegisterSending(true);
       })
   }
 
-  const handleLogin = (email, password) => {
-    setLoginSending(true);
-    api.authorization(email, password)
+  const handleLogin = (authorization) => {
+    setLoginSending(false);
+    api.authorization(authorization)
       .then(res => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
@@ -82,7 +86,7 @@ function App() {
         }
       })
       .finally(() => {
-        setLoginSending(false);
+        setLoginSending(true);
       })
   }
 

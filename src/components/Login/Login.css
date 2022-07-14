@@ -130,6 +130,13 @@
   opacity: 0.8;
 }
 
+.login__button:disabled {
+  background-color: #F8F8F8;
+  border-radius: 6px;
+  color: #000;
+  cursor: default;
+}
+
 @media screen and (max-width: 768px) {
   .login__form {
     margin-top: 232px;
