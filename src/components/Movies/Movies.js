@@ -42,9 +42,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       const searchResult = moviesFilter(init, query, checkboxStatus);
       setFilteredMovies(searchResult);
       setIsSearchDone(true);
-      
     }
-    
   }, [])
 
   //основная функция передаваемая для запуска в форму поиска

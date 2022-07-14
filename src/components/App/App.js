@@ -25,58 +25,90 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMoviesUser, setSavedMoviesUser] =  React.useState([]);
 
+  const [isRegisterSending, setRegisterSending] = React.useState(false);
+  const [isRegisterStatus, setRegisterStatus] = React.useState({});
+
+  const [isLoginSending, setLoginSending] = React.useState(false);
+  const [isLogintStatus, setLoginStatus] = React.useState({});
+
+  const [isProfileSending, setProfileSending] = React.useState(false);
+  const [isProfileStatus, setProfileStatus] = React.useState({});
+
   const history = useHistory();
    
   const handleRegister = (name, email, password) => {
-    
+    setRegisterSending(true);
     api.register(name, email, password)
       .then(() => {
         handleLogin(email, password);
       })
-      .catch((err) => {
-        console.log(err)
+      .catch(err => {
+        if (err.statusCode === 409) {
+          setRegisterStatus({
+            message: 'Пользователь с таким email уже существует'
+          });
+        } else {
+          setRegisterStatus({
+            message: 'При регистрации пользователя произошла ошибка'
+          });
+        }
+      })
+      .finally(() => {
+        setRegisterSending(false);
       })
   }
 
   const handleLogin = (email, password) => {
-
+    setLoginSending(true);
     api.authorization(email, password)
       .then(res => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
         history.push('/movies');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        if (err.statusCode === 401) {
+          setLoginStatus({
+            message: 'Вы ввели неправильный логин или пароль'
+          });
+        } else if (err.statusCode === 400) {
+          setLoginStatus({
+            message: 'При авторизации произошла ошибка. Переданный токен некорректен'
+          });
+        } else {
+          setLoginStatus({
+            message: 'При авторизации произошла ошибка'
+          });
+        }
+      })
+      .finally(() => {
+        setLoginSending(false);
       })
   }
 
-  React.useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if(jwt) {
-      
-    api.validityToken(jwt)
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-        }
-        history.push('/movies');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  }, []);
-
   const handleProfileEdit = (user) => {
-    
+    setProfileStatus({});
+    setProfileSending(true);
     api.patchUser(user)
       .then((newUser) => {
         setCurrentUser(newUser);
-        
+        setProfileStatus({
+          message: 'Профиль обновлён.'
+        });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        if (err.statusCode === 409) {
+          setProfileStatus({
+            message: 'Пользователь с таким email уже существует'
+          });
+        } else {
+          setProfileStatus({
+            message: 'При обновлении профиля произошла ошибка'
+          });
+        }
+      })
+      .finally(() => {
+        setProfileSending(false);
       })
   }
 
@@ -112,9 +144,25 @@ function App() {
     localStorage.removeItem('query');
     localStorage.removeItem('checkboxStatus');
     localStorage.removeItem('searchResults');
-
     history.push('/');
   }
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if(jwt) {
+      
+    api.validityToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          history.push('/movies');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, []);
   
   React.useEffect(() => {
     if (isLoggedIn) {
