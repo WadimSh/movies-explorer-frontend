@@ -96,6 +96,13 @@
   opacity: 0.8;
 }
 
+.register__button:disabled {
+  background-color: #F8F8F8;
+  border-radius: 6px;
+  color: #000;
+  cursor: default;
+}
+
 .register__label {
   align-self: flex-start;
   margin: 0;

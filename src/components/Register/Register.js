@@ -45,7 +45,7 @@ function Register({ onRegister, isSending, requestStatus }) {
         <input className="register__input" placeholder="Введите пароль" type="password" onChange={handlePasswordChange} value={password} autoComplete="off" required />
         <span className="register__error"></span>
         <span className="register__feedback"></span>
-        <button className="register__button" type="submit">Зарегистрироваться</button>
+        <button disabled={isSending} className="register__button" type="submit">Зарегистрироваться</button>
         <p className="register__caption">
           Уже зарегистрированы? 
           <Link to="/signin" className="register__link"> Войти</Link>
