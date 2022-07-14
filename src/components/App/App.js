@@ -29,7 +29,7 @@ function App() {
   const [isRegisterStatus, setRegisterStatus] = React.useState({});
 
   const [isLoginSending, setLoginSending] = React.useState(false);
-  const [isLogintStatus, setLoginStatus] = React.useState({});
+  const [isLoginStatus, setLoginStatus] = React.useState({});
 
   const [isProfileSending, setProfileSending] = React.useState(false);
   const [isProfileStatus, setProfileStatus] = React.useState({});
@@ -150,8 +150,7 @@ function App() {
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if(jwt) {
-      
-    api.validityToken(jwt)
+      api.validityToken(jwt)
       .then((res) => {
         if (res) {
           setLoggedIn(true);
@@ -223,11 +222,15 @@ function App() {
             loggedIn={isLoggedIn}
             onSignOut={handleSignOut}
             onProfileEdit={handleProfileEdit}
+            isSending={isProfileSending}
+            requestStatus={isProfileStatus}
           />
           <Route path="/signin">
             {isLoggedIn ? <Redirect to="/" /> :
               <Login
                 onLogin={handleLogin}
+                isSending={isLoginSending}
+                requestStatus={isLoginStatus}
               />
             }
           </Route>
@@ -235,6 +238,8 @@ function App() {
             {isLoggedIn ? <Redirect to="/" /> :
               <Register
                 onRegister={handleRegister}
+                isSending={isRegisterSending}
+                requestStatus={isRegisterStatus}
               />
             }
           </Route>

@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './Profile.css';
 
-function Profile({ onSignOut, onProfileEdit }) {
+function Profile({ onSignOut, onProfileEdit, isSending, requestStatus }) {
   const currentUser = React.useContext(CurrentUserContext);
   
   const [name, setName] = React.useState(currentUser.name);

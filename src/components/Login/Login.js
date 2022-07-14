@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.svg';
 import './Login.css';
 
-function Login({ onLogin }) {
+function Login({ onLogin, isSending, requestStatus }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
  
