@@ -10,6 +10,7 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
     const input = document.getElementById('queryInput');
     input.setCustomValidity('');
     setQuery(e.target.value);
+        
   }
 
   const handleSubmit = (e) => {
@@ -29,13 +30,7 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
 
   React.useEffect(() => {
     setQuery(onQuery);
-    
-  }, [onQuery])
-
-  React.useEffect(() => {
-    console.log(onCheckboxStatus)
-    setCheckboxStatus(onCheckboxStatus);
-  }, [onCheckboxStatus])
+  }, [])
 
   React.useEffect(() => {
     if (!query) {
@@ -67,12 +62,11 @@ function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
             onClick={handleCheckboxChange}
           >
             <input
-              defaultChecked={false}
-              onChange={() => setCheckboxStatus(!checkboxStatus)}
+              defaultChecked={checkboxStatus}
               className="filter-checkbox__invisible-checkbox"
               type="checkbox"
             />
-            <span className={!checkboxStatus ? "filter-checkbox__pseudo-checkbox" : "filter-checkbox__pseudo-checkboxon"}></span>
+            <span className="filter-checkbox__pseudo-checkbox"></span>
             <span className="filter-checkbox-label-text">Короткометражки</span>
           </label>
         </div>
