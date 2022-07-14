@@ -39,11 +39,10 @@ function App() {
   const handleRegister = (user) => {
     setRegisterSending(false);
     api.register(user)
-      .then((res) => {
-        console.log(res)
+      .then(() => {
         handleLogin({
-          email: res.email,
-          password: res.password,
+          email: user.email,
+          password: user.password,
         });
       })
       .catch(err => {
@@ -62,9 +61,9 @@ function App() {
       })
   }
 
-  const handleLogin = (authorization) => {
+  const handleLogin = (data) => {
     setLoginSending(false);
-    api.authorization(authorization)
+    api.authorization(data)
       .then(res => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);

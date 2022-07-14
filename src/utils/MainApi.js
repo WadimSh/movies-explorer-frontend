@@ -21,24 +21,24 @@ class MainApi {
       }
     }
 
-    register = (name, email, password) => {
+    register = ({ name, email, password }) => {
         return fetch(`${this.url}/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(name, email, password)
+          body: JSON.stringify({ name, email, password })
         })
         .then(this._checkResponse)
     }
 
-    authorization = (email, password) => {
+    authorization = ({ email, password }) => {
         return fetch(`${this.url}/signin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(email, password)
+          body: JSON.stringify({ email, password })
         })
         .then(this._checkResponse)
     }
