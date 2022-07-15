@@ -35,12 +35,22 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   const currentViewport = document.documentElement.clientWidth;
 
   React.useEffect(() => {
-    if (localStorage.getItem('query')) {
+    if (localStorage.getItem('searchResults')) {
       const init = JSON.parse(localStorage.getItem('searchResults'));
       const searchResult = moviesFilter(init, query, checkboxStatus);
       setFilteredMovies(searchResult);
       setIsSearchDone(true);
     }
+    if (localStorage.getItem('query')) {
+      setQuery(localStorage.getItem('query'));
+         
+      } 
+      if (localStorage.getItem('checkboxStatus') === "true") {
+        setCheckboxStatus(true);
+      } else {
+        setCheckboxStatus(false);
+      }
+   
   }, [])
 
   //основная функция передаваемая для запуска в форму поиска
@@ -122,7 +132,8 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     <main className="movies">
       <SearchForm
         onSearchMovies={handleSearch}
-        
+        onQuery={query}
+        onCheckboxStatus={checkboxStatus}
       />
       {isSearchMovies 
         ? <Preloader /> 

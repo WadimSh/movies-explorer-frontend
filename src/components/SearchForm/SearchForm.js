@@ -3,22 +3,28 @@ import { useLocation } from 'react-router-dom';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies }) {
+function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
+  
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   let location = useLocation();
-  let queryItem = localStorage.getItem('query');
   
   React.useEffect(() => {
-    
+    console.log(location.pathname)
+    const value = localStorage.getItem('checkboxStatus');
+    if (location.pathname === '/movies') {
     if (localStorage.getItem('query')) {
-      setQuery(queryItem);
-      console.log(queryItem)
-      
-    }
-    
-  }, [location.pathname === '/movies']);
-
+      setQuery(localStorage.getItem('query'));
+    } 
+      if (JSON.parse(value) === true) {
+        setCheckboxStatus(true);
+      } else {
+        setCheckboxStatus(false);
+      }
+      console.log(checkboxStatus)
+     }  
+    }, [location.pathname])
+  
   const handleQueryChange = (e) => {
     const input = document.getElementById('queryInput');
     input.setCustomValidity('');
@@ -55,7 +61,7 @@ function SearchForm({ onSearchMovies }) {
           <div className="search-from__icon"></div>
           <input
             id="queryInput"
-            value={query}
+            value={query || ''}
             onChange={handleQueryChange}
             className="search-form__input"
             type="text"
@@ -68,14 +74,13 @@ function SearchForm({ onSearchMovies }) {
         <div className="search-form__filter" >
           <label
             className="filter-checkbox"
-            onClick={handleCheckboxChange}
           >
             <input
-              defaultChecked={checkboxStatus}
+              onChange={handleCheckboxChange}
               className="filter-checkbox__invisible-checkbox"
               type="checkbox"
             />
-            <span className={"filter-checkbox__pseudo-checkbox"}></span>
+            <span className={!checkboxStatus ? "filter-checkbox__pseudo-checkbox" : "filter-checkbox__pseudo-checkboxon"}></span>
             <span className="filter-checkbox-label-text">Короткометражки</span>
           </label>
         </div>

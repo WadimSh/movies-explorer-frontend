@@ -144,8 +144,12 @@
   background-size: contain;
 }
 
-.filter-checkbox__invisible-checkbox:checked + .filter-checkbox__pseudo-checkbox {
+.filter-checkbox__pseudo-checkboxon {
+  width: 36px;
+  height: 20px;
   background-image: url("./../../images/checkbox-on.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .filter-checkbox-label-text {
