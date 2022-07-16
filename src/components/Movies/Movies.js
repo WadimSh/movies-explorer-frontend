@@ -10,30 +10,21 @@ import moviesFilter from '../../utils/MoviesFilter';
 import './Movies.css';
 
 function Movies({ cardsList, onCardSaved, onCardDelete }) {
-  //переменная в которой записан текст запроса из поисковой стороки
   const [query, setQuery] = React.useState('');
-  //массив с отображаемым колличеством карточек
-  const [moviesToRender, setMoviesToRender] = React.useState([]);
-  //массив с исходным колличеством фильмов
+  const [checkboxStatus, setCheckboxStatus] = React.useState(false);
+
   const [initialMovies, setInitialMovies] = React.useState([]);
-  //массив с результатами поиска
+  const [moviesToRender, setMoviesToRender] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
-  //логическая переменная для определения состояния загрузки массива фильма, т.е. когда подключать спинер
+  
   const [isSearchMovies, setSearchMovies] = React.useState(false);
   const [searchStatus, setSearchStatus] = React.useState('');
-  //логическая переменная состояния чекбокса - фильтра короткометражек
-  const [checkboxStatus, setCheckboxStatus] = React.useState(false);
-  //логическая переменная состояния на старте, т.е. до поиска
   const [isSearchDone, setIsSearchDone] = React.useState(false);
-  //логическая переменная отображения кнопки ещё
-  const [isMoreButtonVisible, setIsMoreButtonVisible] = React.useState(false);
-  //переменные для отображения колличества карточек в зависимости от расширения экрана
-  //колличество первого паказа карточек
+    
   const [firstResultsNumber, setFirstResultsNumber] = React.useState(0);
-  //колличество последующего показа карточек
   const [moreResultsNumber, setMoreResultsNumber] = React.useState(0);
-  //переменная в которую записана текущая ширина экрана
   const currentViewport = document.documentElement.clientWidth;
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = React.useState(false);
 
   React.useEffect(() => {
     if (localStorage.getItem('searchResults')) {
@@ -44,7 +35,6 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     }
   }, [])
 
-  //основная функция передаваемая для запуска в форму поиска
   const handleSearch = (query, checkboxStatus) => {
     setMoviesToRender([]);
     setQuery(query);
@@ -69,7 +59,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       setInitialMovies(initialMoviesInLocalStorage);
     }
   }
-  //эффект который осуществляет поиск и фильтрацию из исходного массива
+  
   React.useEffect(() => {
     if (initialMovies.length > 0) {
       const searchResults = moviesFilter(initialMovies, query, checkboxStatus);
@@ -80,7 +70,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       localStorage.setItem('searchResults', JSON.stringify(searchResults));
     }
   }, [initialMovies, query, checkboxStatus]);
-  //эффект определения отображения карточек взависимости от ширены экрана
+  
   React.useEffect(() => {
     if (currentViewport <= 480) {
       setFirstResultsNumber(5);
@@ -93,7 +83,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       setMoreResultsNumber(3);
     }
   }, [currentViewport]);
-  //эффект выбора колличества карточек показа
+  
   React.useEffect(() => {
     if (filteredMovies.length > 0) {
       if (filteredMovies.length > firstResultsNumber) {
@@ -102,17 +92,14 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
         setIsMoreButtonVisible(true);
       } else {
         setMoviesToRender(filteredMovies);
-        
       }
-      
     }
   }, [filteredMovies, firstResultsNumber]);
-  //функция работы кнопки ещё
+  
   function handleMoreButtonClick() {
     setMoviesToRender((state) => filteredMovies.slice(0, state.length + moreResultsNumber));
-    
   }
-  //проверка видемости кнопки ещё
+  
   React.useEffect(() => {
     if (moviesToRender.length === filteredMovies.length) {
       setIsMoreButtonVisible(false);
@@ -136,12 +123,11 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
                 isMoreButtonVisible={isMoreButtonVisible}
                 onMoreButtonClick={handleMoreButtonClick}
               />
-            : (
-              <span className="movies__nothing-found">
-                Ничего не найдено
-              </span>
+            : (!isSearchMovies ?
+              <span className="movies__nothing-found">Ничего не найдено</span>
+              : <span className="movies__nothing-found">{searchStatus}</span>
             )
-          : (isSearchMovies ? <span className="movies__nothing-found">searchStatus</span> : "")
+          : ("")
       }
     </main>
   )

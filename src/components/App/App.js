@@ -96,7 +96,7 @@ function App() {
       .then((newUser) => {
         setCurrentUser(newUser);
         setProfileStatus({
-          message: 'Профиль обновлён.'
+          message: 'Профиль обновлён'
         });
       })
       .catch(err => {
@@ -147,6 +147,9 @@ function App() {
     localStorage.removeItem('query');
     localStorage.removeItem('checkboxStatus');
     localStorage.removeItem('searchResults');
+    setLoginStatus({});
+    setRegisterStatus({});
+    setProfileStatus({});
     history.push('/');
   }
 

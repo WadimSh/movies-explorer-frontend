@@ -63,6 +63,11 @@
   margin-bottom: 152px;
 }
 
+.register__input:invalid {
+  color: #FF3055;
+  border-bottom: 1px solid #FF3055;
+}
+
 .register__error {
   position: absolute;
   top: 200px;

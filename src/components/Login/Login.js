@@ -21,7 +21,7 @@ function Login({ onLogin, isSending, requestStatus: { message } }) {
 
   return(
     <section className="login">
-      <form name="login" className="login__form" onSubmit={handleSubmit} action="#">
+      <form name="login" className="login__form" onSubmit={handleSubmit}>
        <div className="login__wrap">
           <Link to="/">
             <img src={Logo} alt="Логотип" />
@@ -34,11 +34,11 @@ function Login({ onLogin, isSending, requestStatus: { message } }) {
         <label className='login__label'>Пароль</label>
         <input className="login__input" placeholder="Введите пароль" type="password" name="password" onChange={handleChange} value={values.password || ''} autoComplete="off" required />
         <span className="login__error">{errors.password || ''}</span>
-        <span className="login__feedback">{message}</span>
+        <span className="login__feedback">{message || ''}</span>
         <button disabled={isDisabled} className="login__button" type="submit">Войти</button>
         <p className="login__caption">
           Ещё не зарегистрированы? 
-          <Link to="/signup" className="login__link"> Регистрация</Link>
+          <Link to="/signup" className="login__link">Регистрация</Link>
         </p>
       </form>
     </section>
