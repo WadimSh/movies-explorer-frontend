@@ -3,26 +3,24 @@ import { useLocation } from 'react-router-dom';
 
 import './SearchForm.css';
 
-function SearchForm({ onSearchMovies, onQuery, onCheckboxStatus }) {
+function SearchForm({ onSearchMovies }) {
   
   const [query, setQuery] = React.useState('');
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   let location = useLocation();
   
   React.useEffect(() => {
-    console.log(location.pathname)
     const value = localStorage.getItem('checkboxStatus');
-    if (location.pathname === '/movies') {
-    if (localStorage.getItem('query')) {
-      setQuery(localStorage.getItem('query'));
-    } 
-      if (JSON.parse(value) === true) {
-        setCheckboxStatus(true);
-      } else {
-        setCheckboxStatus(false);
-      }
-      console.log(checkboxStatus)
-     }  
+      if (location.pathname === '/movies') {
+        if (localStorage.getItem('query')) {
+          setQuery(localStorage.getItem('query'));
+        } 
+        if (JSON.parse(value) === true) {
+          setCheckboxStatus(true);
+        } else {
+          setCheckboxStatus(false);
+        }
+      }  
     }, [location.pathname])
   
   const handleQueryChange = (e) => {

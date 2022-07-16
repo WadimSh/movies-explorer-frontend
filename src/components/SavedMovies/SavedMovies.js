@@ -33,8 +33,6 @@ function SavedMovies({ cardsList, onCardDelete }) {
     <main className="saved-movies">
       <SearchForm
         onSearchMovies={handleSearch}
-        onQuery={query}
-        onCheckboxStatus={checkboxStatus}
       />
       {isSearchDone
       ? filteredMovies.length > 0

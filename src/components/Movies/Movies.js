@@ -41,16 +41,6 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
       setFilteredMovies(searchResult);
       setIsSearchDone(true);
     }
-    if (localStorage.getItem('query')) {
-      setQuery(localStorage.getItem('query'));
-         
-      } 
-      if (localStorage.getItem('checkboxStatus') === "true") {
-        setCheckboxStatus(true);
-      } else {
-        setCheckboxStatus(false);
-      }
-   
   }, [])
 
   //основная функция передаваемая для запуска в форму поиска
@@ -132,8 +122,6 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
     <main className="movies">
       <SearchForm
         onSearchMovies={handleSearch}
-        onQuery={query}
-        onCheckboxStatus={checkboxStatus}
       />
       {isSearchMovies 
         ? <Preloader /> 
