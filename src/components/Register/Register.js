@@ -29,13 +29,13 @@ function Register({ onRegister, isSending, requestStatus: { message } }) {
         </div>
         <h2 className="register__title">Добро пожаловать!</h2>
         <label className="register__label">Имя</label>
-        <input id="name-input" className="register__input" placeholder="Укажите Ваше имя" type="text" name="name" onChange={handleChange} value={values.name || ''} autoComplete="off" minLength="2" maxLength="40" required />
+        <input id="name-input" className="register__input" placeholder="Укажите Ваше имя" type="text" name="name" onChange={handleChange} value={values.name || ''} autoComplete="off" minLength="3" maxLength="40" required />
         <span className="register__error">{errors.name || ''}</span>
         <label className="register__label">E-mail</label>
         <input id="email-input" className="register__input" placeholder="Укажите Ваш e-mail" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={handleChange} value={values.email || ''} autoComplete="off" required />
         <span className="register__error">{errors.email || ''}</span>
         <label className="register__label">Пароль</label>
-        <input id="password-input" className="register__input" placeholder="Введите пароль" type="password" name="password" onChange={handleChange} value={values.password || ''} autoComplete="off" required />
+        <input id="password-input" className="register__input" placeholder="Введите пароль" type="password" name="password" onChange={handleChange} value={values.password || ''} minLength="3" autoComplete="off" required />
         <span className="register__error">{errors.password || ''}</span>
         <span className="register__feedback">{message}</span>
         <button disabled={isDisabled} className="register__button" type="submit">Зарегистрироваться</button>
