@@ -12,7 +12,6 @@ function Login({ onLogin, isSending, requestStatus: { message } }) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values)
     onLogin(values);
   }
 

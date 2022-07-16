@@ -20,6 +20,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   //логическая переменная для определения состояния загрузки массива фильма, т.е. когда подключать спинер
   const [isSearchMovies, setSearchMovies] = React.useState(false);
+  const [searchStatus, setSearchStatus] = React.useState('');
   //логическая переменная состояния чекбокса - фильтра короткометражек
   const [checkboxStatus, setCheckboxStatus] = React.useState(false);
   //логическая переменная состояния на старте, т.е. до поиска
@@ -58,8 +59,8 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
           setInitialMovies(data);
           localStorage.setItem('initialMovies', JSON.stringify(data));
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+            setSearchStatus('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.')
         })
         .finally(() => {
           setSearchMovies(false);
@@ -140,7 +141,7 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
                 Ничего не найдено
               </span>
             )
-          : ("")
+          : (isSearchMovies ? <span className="movies__nothing-found">searchStatus</span> : "")
       }
     </main>
   )
