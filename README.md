@@ -40,4 +40,4 @@ HTML. Семантическая вёрстка.
 
 `51.250.100.25` - публичный IP
 
-[wadim.nomoredomains.xyz](https://wadim.nomoreparties.sbs) — frontend   
+[wadim.nomoreparties.sbs](https://wadim.nomoreparties.sbs) — frontend   
