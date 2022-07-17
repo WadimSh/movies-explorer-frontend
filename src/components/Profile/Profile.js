@@ -26,9 +26,9 @@ function Profile({ onSignOut, onProfileEdit, isSending, requestStatus: { message
 
   const handleUserName = (e) => {
     const value = e.target.value;
+    const err = e.target.validationMessage;
     setName(value);
-    console.log(previousName)
-    if (value !== previousName) {
+    if (value !== previousName && !err) {
       setDisabled(true);
     } else {
       setDisabled(false);
