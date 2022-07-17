@@ -7,6 +7,8 @@ import Preloader from '../Preloader/Preloader';
 import moviesApi from '../../utils/MoviesApi';
 import moviesFilter from '../../utils/MoviesFilter';
 
+import { WIDTH_MOBILE, WIDTH_TABLET, RESULT_MOBILE, RESULT_TABLET, RESULT_DESKTOP, MORE_SMALL, MORE_LARGE } from '../../utils/constants';
+
 import './Movies.css';
 
 function Movies({ cardsList, onCardSaved, onCardDelete }) {
@@ -72,15 +74,15 @@ function Movies({ cardsList, onCardSaved, onCardDelete }) {
   }, [initialMovies, query, checkboxStatus]);
   
   React.useEffect(() => {
-    if (currentViewport <= 480) {
-      setFirstResultsNumber(5);
-      setMoreResultsNumber(2);
-    } else if (currentViewport <= 768) {
-      setFirstResultsNumber(8);
-      setMoreResultsNumber(2);
-    } else if (currentViewport > 768) {
-      setFirstResultsNumber(12);
-      setMoreResultsNumber(3);
+    if (currentViewport <= WIDTH_MOBILE) {
+      setFirstResultsNumber(RESULT_MOBILE);
+      setMoreResultsNumber(MORE_SMALL);
+    } else if (currentViewport <= WIDTH_TABLET) {
+      setFirstResultsNumber(RESULT_TABLET);
+      setMoreResultsNumber(MORE_SMALL);
+    } else if (currentViewport > WIDTH_TABLET) {
+      setFirstResultsNumber(RESULT_DESKTOP);
+      setMoreResultsNumber(MORE_LARGE);
     }
   }, [currentViewport]);
   

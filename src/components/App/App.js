@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect, useLocation } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -11,12 +11,11 @@ import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 import api from '../../utils/MainApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-
-import cardsList from '../../utils/cardsList';
 
 import './App.css';
 
@@ -34,8 +33,12 @@ function App() {
   const [isProfileSending, setProfileSending] = React.useState(false);
   const [isProfileStatus, setProfileStatus] = React.useState({});
 
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+  const [message, setMessage] = React.useState('');
+
   const history = useHistory();
-   
+  const { pathname } = useLocation();
+
   const handleRegister = (user) => {
     setRegisterSending(false);
     api.register(user)
@@ -124,8 +127,9 @@ function App() {
           ...movies
         ]);
       })
-      .catch(err => {
-        console.log(err)
+      .catch(() => {
+        setIsInfoTooltipOpen(true);
+        setMessage('При сохранении фильма произошла ошибка');
       })
   }
 
@@ -135,8 +139,9 @@ function App() {
       .then(() => {
         setSavedMoviesUser((movies) => movies.filter((m) => m._id !== movie._id));
       })
-      .catch(err => {
-        console.log(err)
+      .catch(() => {
+        setIsInfoTooltipOpen(true);
+        setMessage('При удалении фильма произошла ошибка');
       })
   }
 
@@ -153,6 +158,10 @@ function App() {
     history.push('/');
   }
 
+  const closePopup = () => {
+    setIsInfoTooltipOpen(false);
+  };
+
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if(jwt) {
@@ -160,11 +169,12 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          history.push('/movies');
+          history.push(pathname);
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        setIsInfoTooltipOpen(true);
+        setMessage('Пользовательский формат токена неверен');
       });
     }
   }, []);
@@ -176,8 +186,9 @@ function App() {
         .then((user) => {
           setCurrentUser(user);
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+          setIsInfoTooltipOpen(true);
+          setMessage('Ошибка авторизации');
         });
     }
   }, [isLoggedIn]);
@@ -189,13 +200,12 @@ function App() {
         .then((data) => {
           setSavedMoviesUser(data.filter((i) => i.owner === currentUser._id));
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+          setIsInfoTooltipOpen(true);
+          setMessage('Ошибка при загрузке сохраненных фильмов');
         })
     }
   }, [currentUser]);
-
-  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -250,10 +260,17 @@ function App() {
             }
           </Route>
           <Route path="*">
-            <PageNotFound />
+            {isLoggedIn ? <Redirect to="/" /> :
+              <PageNotFound />
+            }
           </Route>
         </Switch>
         <Footer />
+        <InfoTooltip
+          isOpen={isInfoTooltipOpen}
+          onClose={closePopup}
+          status={message}
+        />
       </div>
     </CurrentUserContext.Provider>
   )
