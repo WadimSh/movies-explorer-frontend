@@ -20,11 +20,11 @@ function Profile({ onSignOut, onProfileEdit, isSending, requestStatus: { message
     localStorage.setItem('name', name);
     localStorage.setItem('email', email);
     onProfileEdit({ name, email });
-    setRequestStatusText(message);
     setDisabled(false);
   }
 
   const handleUserName = (e) => {
+    setRequestStatusText('');
     const value = e.target.value;
     const err = e.target.validationMessage;
     setName(value);
@@ -33,12 +33,15 @@ function Profile({ onSignOut, onProfileEdit, isSending, requestStatus: { message
     } else {
       setDisabled(false);
     }
+    
   }
 
   const handleUserEmail = (e) => {
+    setRequestStatusText('');
     const value = e.target.value;
+    const err = e.target.validationMessage;
     setEmail(value);
-    if (value !== previousEmail) {
+    if (value !== previousEmail && !err) {
       setDisabled(true);
     } else {
       setDisabled(false);
