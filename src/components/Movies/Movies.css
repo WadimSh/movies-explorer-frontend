@@ -1,5 +1,17 @@
 .movies {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  
+}
+
+.movies__nothing-found {
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 42px;
+  text-align: center;
 }
