@@ -63,6 +63,12 @@
   align-items: center;
 }
 
+.techs__list-item:hover {
+  background-color: #2BE080;
+  box-shadow: inset 10px 10px 15px rgba(70, 70, 70, 0.12), inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+  transition: background-color 3s cubic-bezier(.1, .8, .5, 2), box-shadow .5s ease-in-out;
+}
+
 @media screen and (max-width: 870px) {
   .techs__container {
     padding: 90px 50px;
