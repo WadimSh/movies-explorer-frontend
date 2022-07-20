@@ -30,7 +30,6 @@ function App() {
   const [isLoginSending, setLoginSending] = React.useState(true);
   const [isLoginStatus, setLoginStatus] = React.useState({});
 
-  const [isProfileSending, setProfileSending] = React.useState(false);
   const [isProfileStatus, setProfileStatus] = React.useState({});
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
@@ -94,7 +93,6 @@ function App() {
 
   const handleProfileEdit = (user) => {
     setProfileStatus({});
-    setProfileSending(true);
     api.patchUser(user)
       .then((newUser) => {
         setCurrentUser(newUser);
@@ -113,10 +111,7 @@ function App() {
           });
         }
       })
-      .finally(() => {
-        setProfileSending(false);
-      })
-  }
+    }
 
   const handleCardSave = (movie) => {
    
@@ -238,7 +233,6 @@ function App() {
             loggedIn={isLoggedIn}
             onSignOut={handleSignOut}
             onProfileEdit={handleProfileEdit}
-            isSending={isProfileSending}
             requestStatus={isProfileStatus}
           />
           <Route path="/signin">
