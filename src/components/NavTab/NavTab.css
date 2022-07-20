@@ -20,7 +20,8 @@
   transition: opacity .3s ease;
 }
 
-.nav-tab__link:hover {
+.nav-tab__link:hover,
+.nav-tab__link:focus {
   background-color: #f2f2f2;
   color: #a4a4a4;
   box-shadow: 10px 10px 15px rgba(70, 70, 70, 0.12), -10px -10px 15px rgba(255, 255, 255, 0.5);

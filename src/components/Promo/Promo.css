@@ -4,6 +4,7 @@
   padding-top: 20px;
   display: flex;
   justify-content: center;
+  
 }
 
 .promo__container {
@@ -14,15 +15,15 @@
   justify-content: space-between;
   align-items: center;
   animation: promo 60s ease-in-out infinite alternate;
-  
   border-radius: 10px;
   width: calc(100% - 80px);
-  min-height: 493px;  
+  min-height: 493px;
 }
 
 @keyframes promo {
   0% {
     background: #f5f5f5 url(../../images/text__COLOR_landing-logo.svg) top 30% left 50%/70% 70% no-repeat;
+    
   }
   10% {
     background: #f5f5f5 url(../../images/text__COLOR_landing-logo3.svg) top 30% left 50%/70% 70% no-repeat;
@@ -67,6 +68,18 @@
   line-height: 58px;
   letter-spacing: -0.04em;
   color: #000;
+  animation: title 1s ease;
+}
+
+@keyframes title {
+  from {
+    transform: matrix(1, 0, 0, 1, 0, 30);
+    opacity: 0;
+  }
+  to {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 770px) {
