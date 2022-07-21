@@ -68,18 +68,14 @@
   line-height: 58px;
   letter-spacing: -0.04em;
   color: #000;
-  animation: title 1s ease;
+  transform: matrix(1, 0, 0, 1, 0, 30);
+  opacity: 0;
+  transition: .8s;
 }
 
-@keyframes title {
-  from {
-    transform: matrix(1, 0, 0, 1, 0, 30);
-    opacity: 0;
-  }
-  to {
-    transform: matrix(1, 0, 0, 1, 0, 0);
-    opacity: 1;
-  }
+.promo__title-active {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
 }
 
 @media screen and (max-width: 770px) {
