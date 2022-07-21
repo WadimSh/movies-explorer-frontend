@@ -2,10 +2,10 @@ import React from 'react';
 
 import './AboutProject.css';
 
-function AboutProject() {
+function AboutProject(props) {
 
   return (
-    <section className="about-project" id="about-project">
+    <section className={`about-project ${props.onScroll < 300 ? "" : "about-project-active"}`} id="about-project">
       <h2 className="about-project__title">О проекте</h2>
       <div className="about-project__features">
         <article className="about-project__feature">

@@ -9,17 +9,27 @@ import Portfolio from '../Portfolio/Portfolio';
 
 import './Main.css';
 
-function Main() {
+function Main({ onScroll }) {
 
   return (
     <main className="main">
-      <Promo>
+      <Promo
+        onScroll={onScroll}
+      >
         <NavTab />
       </Promo>
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <AboutProject
+        onScroll={onScroll}
+      />
+      <Techs
+        onScroll={onScroll}
+      />
+      <AboutMe
+        onScroll={onScroll}
+      />
+      <Portfolio
+        
+      />
     </main>
   )
 }

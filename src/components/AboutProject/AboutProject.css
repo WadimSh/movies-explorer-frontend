@@ -1,5 +1,13 @@
 .about-project {
   padding: 110px 70px;
+  transform: matrix(1, 0, 0, 1, 0, 30);
+  opacity: 0;
+  transition: .8s;
+}
+
+.about-project-active {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
 }
 
 .about-project__title {

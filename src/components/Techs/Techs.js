@@ -2,11 +2,11 @@ import React from 'react';
 
 import './Techs.css';
 
-function Techs() {
+function Techs(props) {
 
   return (
     <section className="techs" id="techs">
-      <div className="techs__container">
+      <div className={`techs__container ${props.onScroll < 800 ? "" : "techs__container-active"}`}>
         <h2 className="techs__title" >Технологии</h2>
         <h3 className="techs__subtitle">7 технологий</h3>
         <p className="techs__paragraph">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>

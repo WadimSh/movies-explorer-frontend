@@ -5,6 +5,14 @@
 
 .techs__container {
   padding: 100px 70px;
+  transform: matrix(1, 0, 0, 1, 0, 30);
+  opacity: 0;
+  transition: .8s;
+}
+
+.techs__container-active {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
 }
 
 .techs__title {
