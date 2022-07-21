@@ -2,7 +2,20 @@ import React from 'react';
 
 import './AboutProject.css';
 
+
 function AboutProject(props) {
+  
+  const container1 = {
+        backgroundColor: '#2BE080',
+        flexGrow: (props.onScroll > 450 ? props.onScroll < 500  ? `${((props.onScroll.toFixed() - 450) / 100)}` : "1" : "0"),
+        transition: '.8s'
+      }
+
+  const container2 = {
+        backgroundColor: '#F2F2F2',
+        flexGrow: (props.onScroll > 400 ? props.onScroll < 550  ? `${((props.onScroll.toFixed() - 400) / 100)}` : "7" : "0"),
+        transition: '.8s'
+      }
  
   return (
     <section className="about-project" id="about-project">
@@ -19,8 +32,8 @@ function AboutProject(props) {
       </div>
       <div className="about-project__timeline">
         <div className="about-project__bar-wrap">
-          <div className={`about-project__bar about-project__bar_backend ${props.onScroll < 500 ? "" : "about-project__bar_backend-active"}`}>1 неделя</div>
-          <div className={`about-project__bar about-project__bar_frontend ${props.onScroll < 500 ? "" : "about-project__bar about-project__bar_frontend-active"}`}>2 недели</div>
+          <div className="about-project__bar" style={container1}>1 неделя</div>
+          <div className="about-project__bar" style={container2}>2 недели</div>
         </div>
         <div className="about-project__caption-wrap">
           <div className="about-project__caption about-project__caption_backend">Back-end</div>

@@ -68,13 +68,13 @@
   line-height: 58px;
   letter-spacing: -0.04em;
   color: #000;
-  transform: matrix(1, 0, 0, 1, 0, 30);
+  transform: translateY(50px);
   opacity: 0;
-  transition: .8s;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
 }
 
 .promo__title-active {
-  transform: matrix(1, 0, 0, 1, 0, 0);
+  transform: translateY(0);
   opacity: 1;
 }
 
