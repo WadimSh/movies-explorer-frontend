@@ -1,5 +1,8 @@
 .about-project {
   padding: 110px 70px;
+  position: sticky;
+  top: 0;
+  z-index: -100;
 }
 
 .about-project__title {

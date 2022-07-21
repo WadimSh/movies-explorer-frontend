@@ -1,13 +1,7 @@
 .about-me {
+  background-color: #fff;
   padding: 110px 70px 50px;
-  transform: matrix(1, 0, 0, 1, 0, 30);
-  opacity: 0;
-  transition: .8s;
-}
-
-.about-me-active {
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  opacity: 1;
+  
 }
 
 .about-me__title {

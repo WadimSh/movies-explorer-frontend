@@ -3,10 +3,10 @@ import React from 'react';
 import Photo from '../../images/about-me.jpg';
 import './AboutMe.css';
 
-function AboutMe(props) {
+function AboutMe() {
 
   return (
-    <section className={`about-me ${props.onScroll < 1500 ? "" : "about-me-active"}`} id="about-me">
+    <section className="about-me" id="about-me">
       <h2 className="about-me__title">Студент</h2>
       <div className="about-me__wrap">
         <div className="about-me__info">
