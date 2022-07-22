@@ -38,18 +38,6 @@ function App() {
   const history = useHistory();
   const { pathname } = useLocation();
 
-  const [scroll, setScroll] = React.useState(0);
-
-  const handleScroll = () => {
-    setScroll(window.scrollY);
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [])
-
-
   const handleRegister = (user) => {
     setRegisterSending(false);
     api.register(user)
@@ -222,9 +210,7 @@ function App() {
         />
         <Switch>
           <Route exact path="/">
-            <Main
-              onScroll={scroll}
-            />
+            <Main />
           </Route>
           <ProtectedRoute
             path="/movies"

@@ -9,23 +9,37 @@ import Portfolio from '../Portfolio/Portfolio';
 
 import './Main.css';
 
-function Main({ onScroll }) {
+function Main() {
+  const currentViewportHeight = document.documentElement.clientHeight;
+
+  //const currentViewportWidth = document.documentElement.clientWidth;
+  const [scroll, setScroll] = React.useState(0);
+  const handleScroll = () => {
+    setScroll(window.scrollY);
+  }
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <main className="main">
       <Promo
-        onScroll={onScroll}
+        onScroll={scroll}
+        onHeight={currentViewportHeight}
       >
         <NavTab />
       </Promo>
       <AboutProject
-        onScroll={onScroll}
+        onHeight={currentViewportHeight}
       />
       <Techs
-        onScroll={onScroll}
+        onScroll={scroll}
+        onHeight={currentViewportHeight}
       />
       <AboutMe
-        onScroll={onScroll}
+        onScroll={scroll}
+        onHeight={currentViewportHeight}
       />
       <Portfolio
         
