@@ -80,27 +80,14 @@
 }
 
 .about-project__bar_backend {
-  transform: matrix(1, 0, 0, 1, -30, 0);
-  opacity: 0;
-  transition: 1.4s;
-}
-
-.about-project__bar_backend-active {
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  opacity: 1;
+  flex-grow: 1;
+  background-color: #2BE080;
 }
 
 .about-project__bar_frontend {
   flex-grow: 7;
   background-color: #F2F2F2;
-  transform: matrix(1, 0, 0, 1, -200, 0);
-  opacity: 0;
-  transition: .8s;
-}
-
-.about-project__bar_frontend-active {
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  opacity: 1;
+  
 }
 
 .about-project__caption-wrap {

@@ -12,6 +12,14 @@
   font-size: 22px;
   line-height: 27px;
   letter-spacing: -0.04em;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-me__title-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-me__wrap {
@@ -33,6 +41,14 @@
   font-size: 50px;
   line-height: 58px;
   letter-spacing: -0.04em;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-me__name-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-me__profile {
@@ -41,6 +57,14 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-me__profile-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-me__description {
@@ -50,7 +74,16 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
+  transform: matrix(1, 0, 0, 1, -200, 0);
+  opacity: 0;
+  transition: .4s;
 }
+
+.about-me__description-active {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
+}
+
 
 .about-me__links-list {
   margin: 0;

@@ -6,10 +6,10 @@ function Techs(props) {
 
   return (
     <section className="techs" id="techs">
-      <div className={`techs__container ${props.onScroll < 800 ? "" : "techs__container-active"}`}>
-        <h2 className="techs__title" >Технологии</h2>
-        <h3 className="techs__subtitle">7 технологий</h3>
-        <p className="techs__paragraph">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
+      <div className="techs__container">
+        <h2 className={`techs__title ${props.onScroll < 800 ? "" : "techs__title-active"}`}>Технологии</h2>
+        <h3 className={`techs__subtitle ${props.onScroll < 900 ? "" : "techs__subtitle-active"}`}>7 технологий</h3>
+        <p className={`techs__paragraph ${props.onScroll < 1000 ? "" : "techs__paragraph-active"}`}>На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
         <ul className="techs__list">
           <li className="techs__list-item">HTML</li>
           <li className="techs__list-item">CSS</li>
