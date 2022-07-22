@@ -4,6 +4,24 @@ import Photo from '../../images/about-me.jpg';
 import './AboutMe.css';
 
 function AboutMe(props) {
+  const [checkOp, setCheckOp] = React.useState(0);
+  const [check, setCheck] = React.useState(0);
+
+  React.useEffect(() => {
+    if (props.onScroll > 1400) {
+      let score = ((props.onScroll - 1400) / 1000);
+      let scoreOp = (85 - ((props.onScroll - 1400) / 10));
+      setCheck(score);
+      setCheckOp(scoreOp)
+    } if (props.onScroll > 1700) {
+      setCheck(1);
+    }
+  }, [props.onScroll])
+
+  const container = {
+    transform: `matrix(1, 0, 0, 1, 0, ${checkOp})`
+   
+  }
 
   return (
     <section className="about-me" id="about-me">
@@ -22,7 +40,7 @@ function AboutMe(props) {
             </li>
           </ul>
         </div>
-        <img className="about-me__photo" src={Photo} alt="Фотография студента" />
+        <img className="about-me__photo" style={container} src={Photo} alt="Фотография студента" />
       </div>
     </section>
   )

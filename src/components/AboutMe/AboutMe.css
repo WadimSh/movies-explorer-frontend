@@ -76,7 +76,7 @@
   line-height: 22px;
   transform: matrix(1, 0, 0, 1, -200, 0);
   opacity: 0;
-  transition: .4s;
+  transition: .8s;
 }
 
 .about-me__description-active {
