@@ -12,33 +12,18 @@ import './Main.css';
 function Main() {
   const currentViewportHeight = document.documentElement.clientHeight;
 
-  //const currentViewportWidth = document.documentElement.clientWidth;
-  const [scroll, setScroll] = React.useState(0);
-  const handleScroll = () => {
-    setScroll(window.scrollY);
-  }
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [])
-
   return (
     <main className="main">
-      <Promo
-        onScroll={scroll}
-        onHeight={currentViewportHeight}
-      >
+      <Promo>
         <NavTab />
       </Promo>
       <AboutProject
         onHeight={currentViewportHeight}
       />
       <Techs
-        onScroll={scroll}
         onHeight={currentViewportHeight}
       />
       <AboutMe
-        onScroll={scroll}
         onHeight={currentViewportHeight}
       />
       <Portfolio

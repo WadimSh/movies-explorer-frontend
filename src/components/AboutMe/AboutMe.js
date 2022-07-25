@@ -4,41 +4,49 @@ import Photo from '../../images/about-me.jpg';
 import './AboutMe.css';
 
 function AboutMe(props) {
-  const ref = React.useRef(null);
-  const [height, setHeight] = React.useState(0);
+  const ref = React.useRef();
+  const titleRef = React.useRef();
+  const nameRef = React.useRef();
+  const profileRef = React.useRef();
+  const descriptionRef = React.useRef();
   
+  const [start, setStart] = React.useState(0);
+  const [title, setTitle] = React.useState(0);
+  const [name, setName] = React.useState(0);
+  const [profile, setProfile] = React.useState(0);
+  const [description, setDescription] = React.useState(0);
+  
+  const handleScroll = () => {
+    const score = ref.current.getBoundingClientRect();
+    const scoreTitle = titleRef.current.getBoundingClientRect();
+    const scoreName = nameRef.current.getBoundingClientRect();
+    const scoreProfile = profileRef.current.getBoundingClientRect();
+    const scoreDescription = descriptionRef.current.getBoundingClientRect();
+    setStart(score.top);
+    setTitle(scoreTitle.top);
+    setName(scoreName.top);
+    setProfile(scoreProfile.top);
+    setDescription(scoreDescription.top);
+  }
+
   React.useEffect(() => {
-    setHeight(ref.current.clientHeight);
-    console.log(props.onHeight)
-  }, [height])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
-  const [checkOp, setCheckOp] = React.useState(0);
-  const [check, setCheck] = React.useState(0);
-
-  React.useEffect(() => {
-    if (props.onScroll > (props.onHeight * 2)) {
-      let score = ((props.onScroll - (props.onHeight * 2)) / 1000);
-      let scoreOp = (85 - ((props.onScroll - (props.onHeight * 2)) / 10));
-      setCheck(score);
-      setCheckOp(scoreOp)
-    } if (props.onScroll > ((props.onHeight * 2) + 150)) {
-      setCheck(1);
-    }
-  }, [props.onScroll])
-
-  const container = {
-    transform: `matrix(1, 0, 0, 1, 0, ${checkOp})`
-   
+  const conteiner = {
+    transform: `matrix(1, 0, 0, 1, 0, ${0 + (start / 10)})`,
+    opacity: (1 - (start / 1000))
   }
 
   return (
     <section className="about-me" id="about-me" ref={ref}>
-      <h2 className={`about-me__title ${props.onScroll < (props.onHeight) ? "" : "about-me__title-active"}`}>Студент</h2>
+      <h2 ref={titleRef} className={`about-me__title ${((props.onHeight / 1.2) <= title) ? "" : "about-me__title-active"}`}>Студент</h2>
       <div className="about-me__wrap">
         <div className="about-me__info">
-          <h3 className={`about-me__name ${props.onScroll < (props.onHeight + 50) ? "" : "about-me__name-active"}`}>Вадим</h3>
-          <p className={`about-me__profile ${props.onScroll < (props.onHeight + 100) ? "" : "about-me__profile-active"}`}>Фронтенд-разработчик, 43 года</p>
-          <p className={`about-me__description ${props.onScroll < (props.onHeight + 150) ? "" : "about-me__description-active"}`}>Я&nbsp;живу в&nbsp;Москве, закончил факультет АСУ ВМИРЭ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку. Недавно решил освоить профессию веб-разработчика. Пока есть идеи как применить новые знания на&nbsp;текущей работе, а&nbsp;будущем возможно полностью перейду в&nbsp;программисты.</p>
+          <h3 ref={nameRef} className={`about-me__name ${((props.onHeight / 1.2) <= name) ? "" : "about-me__name-active"}`}>Вадим</h3>
+          <p ref={profileRef} className={`about-me__profile ${((props.onHeight / 1.2) <= profile) ? "" : "about-me__profile-active"}`}>Фронтенд-разработчик, 43 года</p>
+          <p ref={descriptionRef} className={`about-me__description ${((props.onHeight / 1.5) <= description) ? "" : "about-me__description-active"}`}>Я&nbsp;живу в&nbsp;Москве, закончил факультет АСУ ВМИРЭ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку. Недавно решил освоить профессию веб-разработчика. Пока есть идеи как применить новые знания на&nbsp;текущей работе, а&nbsp;будущем возможно полностью перейду в&nbsp;программисты.</p>
           <ul className="about-me__links-list">
             <li>
               <a className="about-me__links-item" href="https://www.facebook.com" target="_blank">Facebook</a>
@@ -48,7 +56,7 @@ function AboutMe(props) {
             </li>
           </ul>
         </div>
-        <img className="about-me__photo" style={container} src={Photo} alt="Фотография студента" />
+        <img className="about-me__photo" style={conteiner} src={Photo} alt="Фотография студента" />
       </div>
     </section>
   )

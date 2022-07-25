@@ -3,34 +3,47 @@ import React from 'react';
 import './AboutProject.css';
 
 function AboutProject(props) {
-  const ref = React.useRef();
-  const subtitleRef = React.useRef();
+  const titleRef = React.useRef();
+  const subtitOneRef = React.useRef();
+  const subtitTwoRef = React.useRef();
+  const paragraphOneRef = React.useRef();
+  const paragraphTwoRef = React.useRef();
 
-  const [fit, setFit] = React.useState(0);
-  const [git, setGit] = React.useState(0);
-  
+  const [title, setTitle] = React.useState(0);
+  const [subtitOne, setSubtitOne] = React.useState(0);
+  const [subtitTwo, setSubtitTwo] = React.useState(0);
+  const [paragraphOne, setParagraphOne] = React.useState(0);
+  const [paragraphTwo, setParagraphTwo] = React.useState(0);
+
+  const handleScroll = () => {
+    const scoreTitle = titleRef.current.getBoundingClientRect();
+    const scoreSubtitOne = subtitOneRef.current.getBoundingClientRect();
+    const scoreSubtitTwo = subtitTwoRef.current.getBoundingClientRect();
+    const scoreParagraphOne = paragraphOneRef.current.getBoundingClientRect();
+    const scoreParagraphTwo = paragraphTwoRef.current.getBoundingClientRect();
+    setTitle(scoreTitle.top);
+    setSubtitOne(scoreSubtitOne.top);
+    setSubtitTwo(scoreSubtitTwo.top);
+    setParagraphOne(scoreParagraphOne.top);
+    setParagraphTwo(scoreParagraphTwo.top);
+  }
 
   React.useEffect(() => {
-    const rect = ref.current.getBoundingClientRect();
-    setFit(rect.top);
-    const subtitle = subtitleRef.current.getBoundingClientRect();
-    setGit(subtitle.top)
-  })
-  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
-  
-  
   return (
     <section className="about-project" id="about-project" >
-      <h2 ref={ref} className={`about-project__title ${((props.onHeight / 2) <= fit) ? "" : "about-project__title-active"}`}>О проекте</h2>
+      <h2 ref={titleRef} className={`about-project__title ${((props.onHeight / 1.2) <= title) ? "" : "about-project__title-active"}`}>О проекте</h2>
       <div className="about-project__features" >
         <article className="about-project__feature">
-          <h3 ref={subtitleRef} className={`about-project__subtitle ${((props.onHeight / 2) <= git) ? "" : "about-project__subtitle-active"}`}>Дипломный проект включал 5 этапов</h3>
-          <p className={`about-project__paragraph ${((props.onHeight / 2) <= fit) ? "" : "about-project__paragraph-active"}`}>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и&nbsp;финальные доработки.</p>
+          <h3 ref={subtitOneRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitOne) ? "" : "about-project__subtitle-active"}`}>Дипломный проект включал 5 этапов</h3>
+          <p ref={paragraphOneRef} className={`about-project__paragraph ${((props.onHeight / 1.2) <= paragraphOne) ? "" : "about-project__paragraph-active"}`}>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и&nbsp;финальные доработки.</p>
         </article>
         <article className="about-project__feature">
-          <h3 className={`about-project__subtitle ${((props.onHeight / 2) <= fit) ? "" : "about-project__subtitle-active"}`}>На выполнение диплома ушло 3 недели</h3>
-          <p className={`about-project__paragraph ${((props.onHeight / 2) <= fit) ? "" : "about-project__paragraph-active"}`}>У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+          <h3 ref={subtitTwoRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitTwo) ? "" : "about-project__subtitle-active"}`}>На выполнение диплома ушло 3 недели</h3>
+          <p ref={paragraphTwoRef} className={`about-project__paragraph ${((props.onHeight / 1.2) <= paragraphTwo) ? "" : "about-project__paragraph-active"}`}>У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
         </article>
       </div>
       <div className="about-project__timeline">

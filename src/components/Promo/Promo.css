@@ -60,14 +60,6 @@
   line-height: 58px;
   letter-spacing: -0.04em;
   color: #000;
-  transform: translateY(50px);
-  opacity: 0;
-  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
-}
-
-.promo__title-active {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 @media screen and (max-width: 770px) {
