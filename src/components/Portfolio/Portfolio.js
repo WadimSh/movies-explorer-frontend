@@ -15,7 +15,7 @@ function Portfolio() {
             </a>
           </li>
           <li className="portfolio__links-item">
-            <a className="portfolio__link" href="https://github.com/wadimsh/mesto-1" target="_blank">Адаптивный сайт
+            <a className="portfolio__link" href="https://github.com/wadimsh/mesto-vanila" target="_blank">Адаптивный сайт
               <p className="portfolio__link-icon">↗</p>
             </a>
           </li>
