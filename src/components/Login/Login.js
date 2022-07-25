@@ -38,7 +38,7 @@ function Login({ onLogin, isSending, requestStatus: { message } }) {
         <button disabled={isDisabled} className="login__button" type="submit">Войти</button>
         <p className="login__caption">
           Ещё не зарегистрированы? 
-          <Link to="/signup" className="login__link">Регистрация</Link>
+          <Link to="/signup" className="login__link"> Регистрация</Link>
         </p>
       </form>
     </section>

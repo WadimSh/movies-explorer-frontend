@@ -10,16 +10,25 @@ import Portfolio from '../Portfolio/Portfolio';
 import './Main.css';
 
 function Main() {
+  const currentViewportHeight = document.documentElement.clientHeight;
 
   return (
     <main className="main">
       <Promo>
         <NavTab />
       </Promo>
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <AboutProject
+        onHeight={currentViewportHeight}
+      />
+      <Techs
+        onHeight={currentViewportHeight}
+      />
+      <AboutMe
+        onHeight={currentViewportHeight}
+      />
+      <Portfolio
+        
+      />
     </main>
   )
 }

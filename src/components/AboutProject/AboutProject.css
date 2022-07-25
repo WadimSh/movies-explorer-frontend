@@ -1,5 +1,8 @@
 .about-project {
   padding: 110px 70px;
+  position: sticky;
+  top: 0;
+  z-index: -100;
 }
 
 .about-project__title {
@@ -10,6 +13,14 @@
   font-size: 22px;
   line-height: 27px;
   letter-spacing: -0.04em;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-project__title-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-project__features {
@@ -24,6 +35,14 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-project__subtitle-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-project__paragraph {
@@ -32,6 +51,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 400ms ease-in-out, opacity 400ms ease-out;
+}
+
+.about-project__paragraph-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about-project__timeline {
@@ -60,6 +87,7 @@
 .about-project__bar_frontend {
   flex-grow: 7;
   background-color: #F2F2F2;
+  
 }
 
 .about-project__caption-wrap {
