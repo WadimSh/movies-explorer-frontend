@@ -73,7 +73,7 @@
 
 @media screen and (max-width: 770px) {
   .promo__container {
-    padding-top: 350px;
+    padding-top: 250px;
     min-height: 834px;
     width: calc(100% - 40px);
   }
@@ -87,7 +87,7 @@
   }
 
   .words span {
-    font-size: 65px;
+    font-size: 50px;
   }
   
 }
