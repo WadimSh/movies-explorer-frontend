@@ -44,7 +44,7 @@ function AboutMe(props) {
       <h2 ref={titleRef} className={`about-me__title ${((props.onHeight / 1.2) <= title) ? "" : "about-me__title-active"}`}>Студент</h2>
       <div className="about-me__wrap">
         <div className="about-me__info">
-          <h3 ref={nameRef} className={`about-me__name ${((props.onHeight / 1.2) <= name) ? "" : "about-me__name-active"}`}>Вадим</h3>
+          <h1 ref={nameRef} className={`about-me__name ${((props.onHeight / 1.2) <= name) ? "" : "about-me__name-active"}`}>Вадим</h1>
           <p ref={profileRef} className={`about-me__profile ${((props.onHeight / 1.2) <= profile) ? "" : "about-me__profile-active"}`}>Фронтенд-разработчик, 43 года</p>
           <p ref={descriptionRef} className={`about-me__description ${((props.onHeight / 1.5) <= description) ? "" : "about-me__description-active"}`}>Я&nbsp;живу в&nbsp;Москве, закончил факультет АСУ ВМИРЭ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку. Недавно решил освоить профессию веб-разработчика. Пока есть идеи как применить новые знания на&nbsp;текущей работе, а&nbsp;будущем возможно полностью перейду в&nbsp;программисты.</p>
           <ul className="about-me__links-list">

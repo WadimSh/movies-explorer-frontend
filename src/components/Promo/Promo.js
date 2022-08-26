@@ -7,7 +7,24 @@ function Promo(props) {
   return (
     <section className="promo">
       <div className="promo__container">
-        <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
+      <div className="words word-1">
+        <span>M</span>
+        <span>O</span>
+        <span>V</span>
+        <span>I</span>
+        <span>E</span>
+        <span>S</span>
+      </div>
+      <div className="words word-2">
+        <span>E</span>
+        <span>X</span>
+        <span>P</span>
+        <span>L</span>
+        <span>O</span>
+        <span>R</span>
+        <span>E</span>
+        <span>R</span>
+      </div>
         {props.children}
       </div>
     </section>
