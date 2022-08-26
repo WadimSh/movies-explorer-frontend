@@ -18,9 +18,6 @@ function Footer() {
             <li>
               <a className="footer__links-item" href="https://github.com/wadimsh" target="_blank">Github</a>
             </li>
-            <li>
-              <a className="footer__links-item" href="https://www.facebook.com" target="_blank">Facebook</a>
-            </li>
           </ul>
         </div>
       </footer>

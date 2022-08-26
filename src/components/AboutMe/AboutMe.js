@@ -41,12 +41,12 @@ function AboutMe(props) {
 
   return (
     <section className="about-me" id="about-me" ref={ref}>
-      <h2 ref={titleRef} className={`about-me__title ${((props.onHeight / 1.2) <= title) ? "" : "about-me__title-active"}`}>Студент</h2>
+      <h2 ref={titleRef} className={`about-me__title ${((props.onHeight / 1.2) <= title) ? "" : "about-me__title-active"}`}>Разработчик</h2>
       <div className="about-me__wrap">
         <div className="about-me__info">
           <h1 ref={nameRef} className={`about-me__name ${((props.onHeight / 1.2) <= name) ? "" : "about-me__name-active"}`}>Вадим</h1>
-          <p ref={profileRef} className={`about-me__profile ${((props.onHeight / 1.2) <= profile) ? "" : "about-me__profile-active"}`}>Фронтенд-разработчик, 43 года</p>
-          <p ref={descriptionRef} className={`about-me__description ${((props.onHeight / 1.5) <= description) ? "" : "about-me__description-active"}`}>Я&nbsp;живу в&nbsp;Москве, закончил факультет АСУ ВМИРЭ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку. Недавно решил освоить профессию веб-разработчика. Пока есть идеи как применить новые знания на&nbsp;текущей работе, а&nbsp;будущем возможно полностью перейду в&nbsp;программисты.</p>
+          <p ref={profileRef} className={`about-me__profile ${((props.onHeight / 1.2) <= profile) ? "" : "about-me__profile-active"}`}>Фронтенд-разработчик, 44 года</p>
+          <p ref={descriptionRef} className={`about-me__description ${((props.onHeight / 1.5) <= description) ? "" : "about-me__description-active"}`}>Живу в&nbsp;Зеленограде. В&nbsp;настоящее время работаю веб-разработчиком в&nbsp;компании, торгующей товарами для праздников. В&nbsp;планах разработка платформы для развития и&nbsp;продвижения наукоемких проектов.</p>
           <ul className="about-me__links-list">
             <li>
               <a className="about-me__links-item" href="https://www.facebook.com" target="_blank">Facebook</a>
