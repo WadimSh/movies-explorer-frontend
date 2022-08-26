@@ -38,11 +38,11 @@ function AboutProject(props) {
       <h2 ref={titleRef} className={`about-project__title ${((props.onHeight / 1.2) <= title) ? "" : "about-project__title-active"}`}>О проекте</h2>
       <div className="about-project__features" >
         <article className="about-project__feature">
-          <h3 ref={subtitOneRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitOne) ? "" : "about-project__subtitle-active"}`}>Дипломный проект включал 5 этапов</h3>
+          <h3 ref={subtitOneRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitOne) ? "" : "about-project__subtitle-active"}`}>Проект включал 5 этапов</h3>
           <p ref={paragraphOneRef} className={`about-project__paragraph ${((props.onHeight / 1.2) <= paragraphOne) ? "" : "about-project__paragraph-active"}`}>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и&nbsp;финальные доработки.</p>
         </article>
         <article className="about-project__feature">
-          <h3 ref={subtitTwoRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitTwo) ? "" : "about-project__subtitle-active"}`}>На выполнение диплома ушло 3 недели</h3>
+          <h3 ref={subtitTwoRef} className={`about-project__subtitle ${((props.onHeight / 1.2) <= subtitTwo) ? "" : "about-project__subtitle-active"}`}>На выполнение проекта ушло 3 недели</h3>
           <p ref={paragraphTwoRef} className={`about-project__paragraph ${((props.onHeight / 1.2) <= paragraphTwo) ? "" : "about-project__paragraph-active"}`}>У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
         </article>
       </div>

@@ -30,7 +30,7 @@ function Techs(props) {
       <div className="techs__container">
         <h2 ref={titleRef} className={`techs__title ${((props.onHeight / 1.2) <= title) ? "" : "techs__title-active"}`}>Технологии</h2>
         <h3 ref={subtitRef} className={`techs__subtitle ${((props.onHeight / 1.2) <= subtit) ? "" : "techs__subtitle-active"}`}>7 технологий</h3>
-        <p ref={paragraphRef} className={`techs__paragraph ${((props.onHeight / 1.2) <= paragraph) ? "" : "techs__paragraph-active"}`}>На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
+        <p ref={paragraphRef} className={`techs__paragraph ${((props.onHeight / 1.2) <= paragraph) ? "" : "techs__paragraph-active"}`}>При реализации проекта мы&nbsp;использовали следующие технологии.</p>
         <ul className="techs__list">
           <li className="techs__list-item">HTML</li>
           <li className="techs__list-item">CSS</li>
