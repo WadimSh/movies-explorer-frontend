@@ -71,6 +71,10 @@
   animation-delay: 3s;
 }
 
+.words span:nth-child(8) {
+  animation-delay: 3.5s;
+}
+
 @media screen and (max-width: 770px) {
   .promo__container {
     padding-top: 250px;
