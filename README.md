@@ -36,8 +36,4 @@ HTML. Семантическая вёрстка.
 
 `npm run deploy` - опубликовать на gh-pages
 
-## Ссылки
 
-`51.250.100.25` - публичный IP
-
-[wadim.nomoreparties.sbs](https://wadim.nomoreparties.sbs) — frontend   
